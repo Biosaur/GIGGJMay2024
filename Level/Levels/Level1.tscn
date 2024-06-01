@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dakx2oyqa3mha"]
 
-[ext_resource type="MeshLibrary" uid="uid://sm6yhx8wqy7t" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
+[ext_resource type="MeshLibrary" uid="uid://cpingrgrsjw0c" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_75fai"]
 
 [node name="Level1" type="Node3D"]

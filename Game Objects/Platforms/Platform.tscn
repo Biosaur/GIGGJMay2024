@@ -2,22 +2,21 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_qtyae"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdinh"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fle56"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_de3eu"]
 left_to_right = 0.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jl2jj"]
-a = Vector2(10, -10)
-b = Vector2(-10, 10)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bwal"]
+points = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_nfhnr"]
 left_to_right = 0.0
 size = Vector3(3, 1, 1)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_e2h7q"]
-a = Vector2(50, -10)
-b = Vector2(-10, 10)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0jjrv"]
+points = PackedVector3Array(-1.5, 0.5, 0.5, 1.5, -0.5, 0.5, -1.5, 0.5, -0.5, -1.5, -0.5, 0.5, 1.5, -0.5, -0.5, -1.5, -0.5, -0.5)
 
 [node name="Platform" type="Node3D"]
 
@@ -26,19 +25,19 @@ top_level = true
 visible = false
 mesh = SubResource("BoxMesh_qtyae")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Box"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box/StaticBody2D"]
-shape = SubResource("RectangleShape2D_fdinh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fle56")
 
 [node name="Slope1" type="MeshInstance3D" parent="."]
 top_level = true
 mesh = SubResource("PrismMesh_de3eu")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Slope1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Slope1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slope1/StaticBody2D"]
-shape = SubResource("SegmentShape2D_jl2jj")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slope1/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_2bwal")
 
 [node name="Slope3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -46,7 +45,7 @@ top_level = true
 mesh = SubResource("PrismMesh_nfhnr")
 skeleton = NodePath("")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Slope3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Slope3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slope3/StaticBody2D"]
-shape = SubResource("SegmentShape2D_e2h7q")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Slope3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0jjrv")
