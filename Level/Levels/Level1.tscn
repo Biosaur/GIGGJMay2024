@@ -29,9 +29,6 @@ data = {
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.475504, 0.612016, -0.631927, -0.00129373, 0.718819, 0.695196, 0.879712, -0.329751, 0.342593, 0, 0, 0)
 
-[node name="Player2" parent="." instance=ExtResource("2_75fai")]
-transform = Transform3D(0.562423, 0, 0, 0, 0.562423, 0, 0, 0, 0.562423, -1.45438, 6.30037, 0.5)
-
 [node name="Powerup" parent="." instance=ExtResource("3_3pves")]
 transform = Transform3D(0.479756, 0, 0, 0, 0.479756, 0, 0, 0, 0.479756, -3.302, 6.135, 0.5)
 
