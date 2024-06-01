@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dakx2oyqa3mha"]
+[gd_scene load_steps=4 format=3 uid="uid://dakx2oyqa3mha"]
 
 [ext_resource type="MeshLibrary" uid="uid://cpingrgrsjw0c" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_75fai"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]
+size = Vector3(43, 1, 2)
 
 [node name="Level1" type="Node3D"]
 
@@ -17,3 +20,11 @@ transform = Transform3D(0.475504, 0.612016, -0.631927, -0.00129373, 0.718819, 0.
 
 [node name="Player" parent="." instance=ExtResource("2_75fai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45438, 6.30037, 0.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -5.96046e-08, 0.5)
+shape = SubResource("BoxShape3D_b2d0c")

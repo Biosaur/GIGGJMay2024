@@ -42,3 +42,12 @@ transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 
 spring_length = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
+
+[node name="Hitbox" type="Area3D" parent="CharacterBody3D"]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Hitbox"]
+shape = SubResource("CapsuleShape3D_gta60")
+
+[connection signal="area_entered" from="CharacterBody3D/Hitbox" to="CharacterBody3D" method="_on_hitbox_area_entered"]
