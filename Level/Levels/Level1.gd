@@ -21,4 +21,5 @@ func _on_timer_timeout() -> void:
 
 # debug statements
 func _debug():
+	return
 	#print_debug("time left:", $Timer.time_left)
