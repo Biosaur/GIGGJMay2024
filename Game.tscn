@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg6ghmrgswq53"]
+
+[ext_resource type="PackedScene" uid="uid://dakx2oyqa3mha" path="res://Level/Levels/Level1.tscn" id="1_e67bx"]
+
+[sub_resource type="GDScript" id="GDScript_7uupx"]
+script/source = "extends Node3D
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var player = find_child(\"Player\")
+	player.next_level.connect(_on_next_level)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_next_level():
+	var current_scene_file = find_child(\"Level\").scene_file_path
+	var next_level_path = LEVEL_PATH + str(current_scene_file.to_int() + 1) + \".tscn\"
+	
+"
+
+[node name="Game" type="Node3D"]
+script = SubResource("GDScript_7uupx")
+
+[node name="Level1" parent="." instance=ExtResource("1_e67bx")]

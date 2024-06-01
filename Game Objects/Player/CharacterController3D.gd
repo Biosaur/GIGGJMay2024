@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
-
+const LEVEL_PATH = "res://Level/Levels/Level"
 const SPEED = 5.0
 const JUMP_VELOCITY = 9.5
 
 signal dead
+signal next_level
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -33,10 +34,16 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_hitbox_area_entered(area):
-	die()
+	if area.get_collision_layer_value(2):
+		die()
+	if area.get_collision_layer_value(3):
+		progress()
 	
 func die():
-	
 	dead.emit()
 	queue_free()
 
+func progress():
+	var current_scene_file = get_tree().current_scene.scene_file_path
+	var next_level_path = LEVEL_PATH + str(current_scene_file.to_int() + 1) + ".tscn"
+	get_tree().change_scene_to_file(next_level_path)
