@@ -28,6 +28,7 @@ material = SubResource("StandardMaterial3D_xkbs4")
 script = ExtResource("3_yudc1")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1.63244, 0, 0, 0, 1, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_ln0rg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -38,8 +39,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_c32ck")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
-spring_length = 10.0
+spring_length = 15.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
 
