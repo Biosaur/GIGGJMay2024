@@ -102,10 +102,15 @@ func _on_hitbox_area_entered(area):
 	if area.get_collision_layer_value(3):
 		progress()
 		return
-	
+
+func _on_hitbox_body_entered(body):
+	if body.owner.is_in_group("Spreadable"):
+		body.owner.spread()
+
 func die():
 	dead.emit()
 	queue_free()
 
 func progress():
 	next_level.emit()
+

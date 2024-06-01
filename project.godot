@@ -57,6 +57,7 @@ attack={
 
 3d_physics/layer_2="Death Zone"
 3d_physics/layer_3="Progress Zone"
+3d_physics/layer_4="Spreadables"
 
 [physics]
 
