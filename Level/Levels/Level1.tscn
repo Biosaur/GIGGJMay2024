@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dakx2oyqa3mha"]
+[gd_scene load_steps=9 format=3 uid="uid://dakx2oyqa3mha"]
 
-[ext_resource type="MeshLibrary" uid="uid://cpingrgrsjw0c" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
+[ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
 [ext_resource type="Script" path="res://Level/Levels/Level1.gd" id="1_tt362"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_75fai"]
-[ext_resource type="PackedScene" uid="uid://c80b5emtl3e2h" path="res://Game Objects/Powerup/ButterPowerup.tscn" id="3_xcnvs"]
-[ext_resource type="PackedScene" uid="uid://bqyvi3mi8lbtk" path="res://Game Objects/Powerup/PowerupCollision.tscn" id="3_3pves"]
+[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PowerupCollision.tscn" id="3_3pves"]
+[ext_resource type="PackedScene" path="res://Game Objects/Powerup/ButterPowerup.tscn" id="3_xcnvs"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="4_hd4yr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]

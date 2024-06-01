@@ -14,11 +14,11 @@ func _process(delta):
 
 func _on_timer_timeout() -> void:
 	print("timer timed out")
-	if $Player.visible:
-		$Player.hide()
-	else:
-		$Player.show()
+	#if $Player.visible:
+	#	$Player.hide()
+	#else:
+	#	$Player.show()
 
 # debug statements
 func _debug():
-	print("time left:", $Timer.time_left)
+	print_debug("time left:", $Timer.time_left)
