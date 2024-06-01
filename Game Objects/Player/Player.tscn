@@ -22,32 +22,32 @@ albedo_texture = ExtResource("2_igv54")
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_c32ck"]
 material = SubResource("StandardMaterial3D_xkbs4")
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" groups=["Player"]]
 
-[node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="." groups=["Player"]]
 script = ExtResource("3_yudc1")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerCharacterBody3D"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerCharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1.63244, 0, 0, 0, 1, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_ln0rg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacterBody3D" groups=["Player"]]
 shape = SubResource("CapsuleShape3D_gta60")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacterBody3D" groups=["Player"]]
 visible = false
 mesh = SubResource("CapsuleMesh_c32ck")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="PlayerCharacterBody3D"]
+[node name="SpringArm3D" type="SpringArm3D" parent="PlayerCharacterBody3D" groups=["Player"]]
 spring_length = 15.0
 
-[node name="Camera3D" type="Camera3D" parent="PlayerCharacterBody3D/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="PlayerCharacterBody3D/SpringArm3D" groups=["Player"]]
 
-[node name="Hitbox" type="Area3D" parent="PlayerCharacterBody3D"]
-collision_mask = 2
+[node name="Hitbox" type="Area3D" parent="PlayerCharacterBody3D" groups=["Player"]]
+collision_mask = 6
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacterBody3D/Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacterBody3D/Hitbox" groups=["Player"]]
 shape = SubResource("CapsuleShape3D_gta60")
 
 [connection signal="area_entered" from="PlayerCharacterBody3D/Hitbox" to="PlayerCharacterBody3D" method="_on_hitbox_area_entered"]

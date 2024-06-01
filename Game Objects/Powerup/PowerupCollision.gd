@@ -1,5 +1,6 @@
 extends Node3D
 
+signal playerEntered
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_area_3d_body_entered(body):
-	if "Player" in body.name:
-		queue_free()
+
+func _on_body_entered(body):
+	if body.is_in_group("Player"):
+		playerEntered.emit()

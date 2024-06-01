@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqyvi3mi8lbtk"]
+
+[ext_resource type="Script" path="res://Game Objects/Powerup/PowerupCollision.gd" id="1_h8pn8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dkfo"]
+
+[node name="PowerupCollision" type="Area3D" groups=["Powerup"]]
+collision_layer = 2
+script = ExtResource("1_h8pn8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Powerup"]]
+shape = SubResource("BoxShape3D_3dkfo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

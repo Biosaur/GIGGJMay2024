@@ -1,5 +1,11 @@
 extends CharacterBody3D
 
+enum PowerupClass {
+	NONE,
+	BUTTER,
+	PEANUTBUTTER,
+}
+
 const LEVEL_PATH = "res://Level/Levels/Level"
 const SPEED = 5.0
 const JUMP_VELOCITY = 9.5
@@ -9,7 +15,7 @@ signal next_level
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
+var currentPowerup = PowerupClass.NONE
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -34,10 +40,16 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_hitbox_area_entered(area):
+	if area.is_in_group("Powerup"):
+		if area.owner.is_in_group("Butter"):
+			currentPowerup = PowerupClass.BUTTER
+		return
 	if area.get_collision_layer_value(2):
 		die()
+		return
 	if area.get_collision_layer_value(3):
 		progress()
+		return
 	
 func die():
 	dead.emit()

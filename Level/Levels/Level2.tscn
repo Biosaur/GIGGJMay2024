@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3x8oawo70dw0"]
+[gd_scene load_steps=5 format=3 uid="uid://b6i1ugldu3ukg"]
 
-[ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="1_sye5q"]
+[ext_resource type="MeshLibrary" uid="uid://cpingrgrsjw0c" path="res://Game Objects/Platforms/Platform.meshlib" id="1_sye5q"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_als7e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]
