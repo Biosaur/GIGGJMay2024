@@ -1,7 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cybw8cr3rj0g0"]
+[gd_scene load_steps=7 format=3 uid="uid://cybw8cr3rj0g0"]
 
 [ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="1_s2j2b"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_dtpjt"]
+[ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="4_avaay"]
+
+[sub_resource type="GDScript" id="GDScript_wgvjj"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]
 size = Vector3(18.7612, 1, 2)
@@ -9,7 +24,8 @@ size = Vector3(18.7612, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwjy6"]
 size = Vector3(2, 19, 3)
 
-[node name="Level2" type="Node3D"]
+[node name="Level3" type="Node3D"]
+script = SubResource("GDScript_wgvjj")
 
 [node name="Player" parent="." instance=ExtResource("2_dtpjt")]
 transform = Transform3D(0.565012, 0, 0, 0, 0.565012, 0, 0, 0, 0.565012, -1.45438, 6.30037, 0.5)
@@ -23,6 +39,16 @@ data = {
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.475504, 0.612016, -0.631927, -0.00129373, 0.718819, 0.695196, 0.879712, -0.329751, 0.342593, 0, 0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("4_avaay")
+
+[node name="Time_remaining" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Death Zone" type="Area3D" parent="."]
 collision_layer = 2
