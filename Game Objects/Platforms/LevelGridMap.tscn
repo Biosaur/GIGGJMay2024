@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqrqynvu3jdr6"]
+
+[ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="1_hqpa3"]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource("1_hqpa3")
+cell_size = Vector3(1, 1, 1)
