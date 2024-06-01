@@ -4,12 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_als7e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]
-size = Vector3(43, 1, 2)
+size = Vector3(64.8997, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwjy6"]
 size = Vector3(2, 19, 3)
 
 [node name="Level2" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_als7e")]
+transform = Transform3D(0.565012, 0, 0, 0, 0.565012, 0, 0, 0, 0.565012, -1.45438, 6.30037, 0.5)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_sye5q")
@@ -21,15 +24,12 @@ data = {
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.475504, 0.612016, -0.631927, -0.00129373, 0.718819, 0.695196, 0.879712, -0.329751, 0.342593, 0, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("2_als7e")]
-transform = Transform3D(0.565012, 0, 0, 0, 0.565012, 0, 0, 0, 0.565012, -1.45438, 6.30037, 0.5)
-
 [node name="Death Zone" type="Area3D" parent="."]
 collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Death Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -5.96046e-08, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 0.5)
 shape = SubResource("BoxShape3D_b2d0c")
 
 [node name="Progress Zone" type="Area3D" parent="."]
@@ -38,5 +38,5 @@ collision_layer = 4
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Progress Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 9, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 10, 0.5)
 shape = SubResource("BoxShape3D_pwjy6")

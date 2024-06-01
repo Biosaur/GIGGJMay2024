@@ -56,6 +56,4 @@ func die():
 	queue_free()
 
 func progress():
-	var current_scene_file = get_tree().current_scene.scene_file_path
-	var next_level_path = LEVEL_PATH + str(current_scene_file.to_int() + 1) + ".tscn"
-	get_tree().change_scene_to_file(next_level_path)
+	next_level.emit()

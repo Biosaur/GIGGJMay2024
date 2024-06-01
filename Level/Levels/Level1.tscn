@@ -16,6 +16,9 @@ size = Vector3(2, 19, 3)
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_tt362")
 
+[node name="Player" parent="." instance=ExtResource("2_75fai")]
+transform = Transform3D(0.565012, 0, 0, 0, 0.565012, 0, 0, 0, 0.565012, -1.45438, 6.30037, 0.5)
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("1_6kl1p")
 cell_size = Vector3(1, 1, 1)

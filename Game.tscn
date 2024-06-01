@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://kdlvbb3f5mx7"]
+
+[ext_resource type="PackedScene" uid="uid://dakx2oyqa3mha" path="res://Level/Levels/Level1.tscn" id="1_e67bx"]
+[ext_resource type="Script" path="res://Game.gd" id="1_lmsfh"]
+[ext_resource type="Script" path="res://Control.gd" id="2_67g0b"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_lmsfh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_67g0b")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Pause Button" type="Button" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Pause"
+
+[node name="Level1" parent="." instance=ExtResource("1_e67bx")]
+
+[connection signal="pressed" from="Control/MarginContainer/Pause Button" to="." method="_on_pause_button_pressed"]

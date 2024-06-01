@@ -50,4 +50,4 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacterBody3D/Hitbox" groups=["Player"]]
 shape = SubResource("CapsuleShape3D_gta60")
 
-[connection signal="area_entered" from="PlayerCharacterBody3D/Hitbox" to="PlayerCharacterBody3D" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="CharacterBody3D/Hitbox" to="CharacterBody3D" method="_on_hitbox_area_entered"]
