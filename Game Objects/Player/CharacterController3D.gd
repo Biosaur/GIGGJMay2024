@@ -93,6 +93,8 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("Powerup"):
 		if area.owner.is_in_group("Butter"):
 			currentPowerup = PowerupClass.BUTTER
+		elif area.owner.is_in_group("PeanutButter"):
+			currentPowerup = PowerupClass.PEANUTBUTTER
 		return
 	if area.get_collision_layer_value(2):
 		die()
