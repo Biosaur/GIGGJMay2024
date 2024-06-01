@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print("time left:", $Timer.time_left)
+	_debug()
 	$Time_remaining.text = "%s" % roundf($Timer.time_left)
 
 
@@ -18,3 +18,7 @@ func _on_timer_timeout() -> void:
 		$Player.hide()
 	else:
 		$Player.show()
+
+# debug statements
+func _debug():
+	print("time left:", $Timer.time_left)
