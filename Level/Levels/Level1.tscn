@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dakx2oyqa3mha"]
 
-[ext_resource type="MeshLibrary" uid="uid://cpingrgrsjw0c" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
+[ext_resource type="MeshLibrary" uid="uid://sm6yhx8wqy7t" path="res://Game Objects/Platforms/Platform.meshlib" id="1_6kl1p"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_75fai"]
 
 [node name="Level1" type="Node3D"]
@@ -16,4 +16,4 @@ data = {
 transform = Transform3D(0.475504, 0.612016, -0.631927, -0.00129373, 0.718819, 0.695196, 0.879712, -0.329751, 0.342593, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_75fai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45438, 6.30037, 0.5)
+transform = Transform3D(0.565012, 0, 0, 0, 0.565012, 0, 0, 0, 0.565012, -1.45438, 6.30037, 0.5)

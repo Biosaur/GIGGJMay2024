@@ -14,3 +14,7 @@ config/name="GI Global Game Jam May 2024"
 run/main_scene="res://Level/Levels/Level1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Assets/icon.svg"
+
+[physics]
+
+3d/default_gravity=15.0
