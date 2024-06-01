@@ -25,6 +25,7 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 
 @export var slideMultiplier : float = 4.0
 @export var slideDuration : float = 3.0
+@export var slideSlipperiness : float = 0.95
 
 signal dead
 signal next_level
@@ -68,10 +69,14 @@ func _physics_process(delta):
 			velocity.y = jumpVelocity
 
 		# Get the input direction and handle the movement/deceleration.
+		var oldXVel = velocity.x
 		if direction:
 			velocity.x = (-1.0 if direction.x < 0.0 else 1.0 if direction.x > 0.0 else 0) * direction.length() * movementSpeed
 		else:
 			velocity.x = move_toward(velocity.x, 0, movementSpeed)
+			
+		if isSliding:
+			velocity.x = lerp(velocity.x, oldXVel, slideSlipperiness)
 
 		if Input.is_action_just_pressed("ability"):
 			if currentPowerup == PowerupClass.PEANUTBUTTER:
