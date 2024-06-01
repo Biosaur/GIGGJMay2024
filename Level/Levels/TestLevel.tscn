@@ -1,27 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://chrddjapv3404"]
+[gd_scene load_steps=3 format=3 uid="uid://chrddjapv3404"]
 
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="1_a10bt"]
-[ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="2_irpx7"]
-[ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="3_2nbg3"]
-[ext_resource type="PackedScene" uid="uid://c80b5emtl3e2h" path="res://Game Objects/Powerup/ButterPowerup.tscn" id="4_5rt4w"]
+[ext_resource type="Texture2D" uid="uid://cyh5lqmwifhfq" path="res://Assets/icon.svg" id="2_bjm26"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a10bt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.04914, 0)
 
-[node name="GridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-mesh_library = ExtResource("2_irpx7")
-cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(65534, 0, 262144, -2, 0, 262144, -65538, 0, 262144, -65537, 0, 262144, -131073, 0, 262144, -196608, 0, 262144, -131072, 0, 262144, -131071, 0, 262144, -131070, 0, 262144, -65533, 0, 262144, -65532, 0, 262144, 4, 0, 262144, 65535, 0, 262144, 0, 0, 262144, -65536, 0, 262144, -1, 0, 262144, -65535, 0, 262144, -65534, 0, 262144, 2, 0, 262144, 1, 0, 262144, 3, 0, 262144, 7, 0, 262144, -65529, 0, 262144, 65533, 0, 262144, 65532, 0, 262144, 65531, 0, 262144, 8, 0, 262144, -65528, 0, 262144, -65527, 0, 262144, -131063, 0, 262144, -65526, 0, 262144, -65525, 0, 262144, 11, 0, 262144, 10, 0, 262144, 9, 0, 262144, 12, 0, 262144, 13, 0, 262144, 14, 0, 262144, -65523, 0, 262144, -196605, 0, 196610, -4, 0, 131074, -196610, 0, 720898, 131074, 0, 65538, 327683, 0, 65538, 524292, 0, 65538, 720901, 0, 65538, 917510, 0, 65538, 720902, 0, 196610, 524293, 0, 196610, 327684, 0, 196610, 131075, 0, 196610, -327678, 0, 196609, -393215, 0, 196609, -458752, 0, 196609, -327681, 0, 131073, -196609, 0, 131072, -262145, 0, 131072, -327680, 0, 131072, -393216, 0, 131072, -262144, 0, 131072, -262143, 0, 131072, -327679, 0, 131072, -196607, 0, 131072, -196606, 0, 131072, -262142, 0, 131072, -131064, 0, 131073, -131062, 0, 196609, -65524, 0, 196609, -65522, 0, 196609)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.686301, -0.393215, -0.61186, 0.727318, 0.37104, 0.577355, -5.51974e-08, -0.841256, 0.540637, 0, 0, 0)
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(558.239, 616.632)
+scale = Vector2(10.9219, 1.64766)
+texture = ExtResource("2_bjm26")
 
-[node name="PowerupSpawner" parent="." instance=ExtResource("3_2nbg3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72853, 2.28055, 0)
-objectToSpawn = ExtResource("4_5rt4w")
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
+polygon = PackedVector2Array(-139, 532, -20, 512, 650, 512, 924, 510, 1137, 512, 1257, 532, 1256, 700, -136, 699)
