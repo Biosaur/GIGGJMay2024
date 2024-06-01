@@ -23,12 +23,16 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 
 @onready var dashVelocity : float = dashDistance / dashDuration
 
+@export var slideMultiplier : float = 4.0
+@export var slideDuration : float = 3.0
+
 signal dead
 signal next_level
 
 var currentPowerup = PowerupClass.NONE
 var dashDirection = Vector3()
 var isDashing = false
+var isSliding = false
 
 func startDashTimer():
 	isDashing = true
@@ -36,32 +40,47 @@ func startDashTimer():
 	isDashing = false
 	velocity = dashDirection * dashCarryover
 
+func startSlideTimer():
+	isSliding = true
+	movementSpeed *= slideMultiplier
+	floor_max_angle = deg_to_rad(85)
+	await get_tree().create_timer(slideDuration).timeout
+	isSliding = false
+	movementSpeed /= slideMultiplier
+	floor_max_angle = deg_to_rad(45)
+
 func _physics_process(delta):
 	# Add the gravity.
 	position.z = 0.5
 	velocity.z = 0
-	if not is_on_floor():
-		velocity.y += (jumpGravity if velocity.y > 0.0 else fallGravity) * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jumpVelocity
-
-	# Get the input direction and handle the movement/deceleration.
+	
+	
 	var direction = Input.get_vector("left", "right", "up", "down")
-	if direction:
-		velocity.x = (-1.0 if direction.x < 0.0 else 1.0 if direction.x > 0.0 else 0) * direction.length() * movementSpeed
-	else:
-		velocity.x = move_toward(velocity.x, 0, movementSpeed)
-
-	if Input.is_action_just_pressed("ability"):
-		if currentPowerup == PowerupClass.BUTTER:
-			currentPowerup = PowerupClass.NONE
-			dashDirection = Vector3(direction.x, -direction.y, 0)
-			startDashTimer()
 	
 	if isDashing:
 		velocity = dashDirection * dashVelocity
+	else:
+		if not is_on_floor():
+			velocity.y += (jumpGravity if velocity.y > 0.0 else fallGravity) * delta
+
+		# Handle jump.
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jumpVelocity
+
+		# Get the input direction and handle the movement/deceleration.
+		if direction:
+			velocity.x = (-1.0 if direction.x < 0.0 else 1.0 if direction.x > 0.0 else 0) * direction.length() * movementSpeed
+		else:
+			velocity.x = move_toward(velocity.x, 0, movementSpeed)
+
+		if Input.is_action_just_pressed("ability"):
+			if currentPowerup == PowerupClass.PEANUTBUTTER:
+				currentPowerup = PowerupClass.NONE
+				dashDirection = Vector3(direction.x, -direction.y, 0)
+				startDashTimer()
+			if currentPowerup == PowerupClass.BUTTER:
+				currentPowerup = PowerupClass.NONE
+				startSlideTimer()
 	
 	move_and_slide()
 
