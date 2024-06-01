@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="GI Global Game Jam May 2024"
+run/main_scene="res://Level/Levels/Level1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
