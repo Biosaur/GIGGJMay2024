@@ -1,5 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://yv4p12rb5cmr"]
 
+[ext_resource type="Shape3D" uid="uid://wyjxgvvw77wf" path="res://Game Objects/Platforms/Slope1by1CollisionShape.tres" id="1_pu07l"]
+[ext_resource type="Shape3D" uid="uid://f1kqcuvsj0uq" path="res://Game Objects/Platforms/Slope3by3CollisionShape.tres" id="2_nyqa0"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_qtyae"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fle56"]
@@ -8,15 +11,9 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 [sub_resource type="PrismMesh" id="PrismMesh_de3eu"]
 left_to_right = 0.0
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2bwal"]
-points = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
 [sub_resource type="PrismMesh" id="PrismMesh_nfhnr"]
 left_to_right = 0.0
 size = Vector3(3, 1, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0jjrv"]
-points = PackedVector3Array(-1.5, 0.5, 0.5, 1.5, -0.5, 0.5, -1.5, 0.5, -0.5, -1.5, -0.5, 0.5, 1.5, -0.5, -0.5, -1.5, -0.5, -0.5)
 
 [node name="Platform" type="Node3D"]
 
@@ -37,7 +34,7 @@ mesh = SubResource("PrismMesh_de3eu")
 [node name="StaticBody3D" type="StaticBody3D" parent="Slope1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Slope1/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_2bwal")
+shape = ExtResource("1_pu07l")
 
 [node name="Slope3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -48,4 +45,4 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Slope3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Slope3/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_0jjrv")
+shape = ExtResource("2_nyqa0")
