@@ -1,8 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr4nnud25g8tv"]
+[gd_scene load_steps=7 format=3 uid="uid://dr4nnud25g8tv"]
 
-[ext_resource type="Script" path="res://Game Objects/Player/CharacterController.gd" id="1_2f51u"]
 [ext_resource type="Texture2D" uid="uid://cyh5lqmwifhfq" path="res://Assets/icon.svg" id="2_igv54"]
 [ext_resource type="Script" path="res://Game Objects/Player/CharacterController3D.gd" id="3_yudc1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ln0rg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_igv54")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gta60"]
 
@@ -12,36 +22,23 @@ albedo_texture = ExtResource("2_igv54")
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_c32ck"]
 material = SubResource("StandardMaterial3D_xkbs4")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_egbk8"]
-size = Vector2(8, 20)
-
 [node name="Player" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("3_yudc1")
 
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+sprite_frames = SubResource("SpriteFrames_ln0rg")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_gta60")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+visible = false
 mesh = SubResource("CapsuleMesh_c32ck")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
-transform = Transform3D(-4.37114e-08, 0.422618, -0.906308, 0, 0.906308, 0.422618, 1, 1.84732e-08, -3.9616e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
 spring_length = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/SpringArm3D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-visible = false
-script = ExtResource("1_2f51u")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_egbk8")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -1.19209e-07)
-scale = Vector2(0.0997392, 0.202807)
-texture = ExtResource("2_igv54")
