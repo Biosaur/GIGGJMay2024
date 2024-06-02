@@ -59,6 +59,7 @@ func startSlideTimer():
 	isSliding = true
 	movementSpeed *= slideMultiplier
 	floor_max_angle = deg_to_rad(85)
+	$"Slippery Rect/AnimationPlayer".play("Slippery")
 	await get_tree().create_timer(slideDuration).timeout
 	isSliding = false
 	movementSpeed /= slideMultiplier
