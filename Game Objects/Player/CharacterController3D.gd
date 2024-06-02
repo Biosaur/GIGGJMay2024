@@ -168,7 +168,7 @@ func _physics_process(delta):
 			projectile.global_position = global_position
 			projectile.velocity = Vector2(slashDirection.x, -slashDirection.y) * 20
 			projectile.rotation.z = atan2(slashDirection.y, -slashDirection.x) 
-			triggerRecoil(attackRecoil, global_position + Vector3(slashDirection.x, -slashDirection.y, 0))
+			triggerRecoil(upgradedAttackRecoil, global_position + Vector3(slashDirection.x, -slashDirection.y, 0))
 			$SoundEffects/Spread_1.play()
 			
 	if isDashing:
