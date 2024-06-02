@@ -16,5 +16,7 @@ func _on_area_entered(area):
 
 
 func _on_body_entered(body):
+	if body.owner.is_in_group("Spreadable"):
+		body.owner.spread("Jam")
 	if not body.is_in_group("Player"):
 		queue_free()

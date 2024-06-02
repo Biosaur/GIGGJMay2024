@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8nm5l2eky3ss"]
+[gd_scene load_steps=7 format=3 uid="uid://b8nm5l2eky3ss"]
 
 [ext_resource type="Script" path="res://Game Objects/Platforms/Spreadable.gd" id="1_wtion"]
+[ext_resource type="PackedScene" uid="uid://db08svebqlvi1" path="res://Assets/SpreadableMeshes/Sad Toast.glb" id="2_wxc74"]
+[ext_resource type="PackedScene" uid="uid://cavjbut5mcxby" path="res://Assets/SpreadableMeshes/Buttered Toast.glb" id="3_v7vfk"]
+[ext_resource type="PackedScene" uid="uid://cyriqh2ki8lqk" path="res://Assets/SpreadableMeshes/Jammed Toast.glb" id="4_7fccu"]
+[ext_resource type="PackedScene" uid="uid://d3ujprkeo0s0k" path="res://Assets/SpreadableMeshes/Peanutted Toast.glb" id="5_fq12r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2v2ru"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_wmkt2"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_0lrdi"]
 
 [node name="Spreadable" type="Node3D" groups=["Spreadable"]]
 script = ExtResource("1_wtion")
@@ -18,9 +18,17 @@ collision_mask = 9
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_2v2ru")
 
-[node name="Unspreaded" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_wmkt2")
+[node name="Unspreaded" parent="." instance=ExtResource("2_wxc74")]
+transform = Transform3D(-0.25, 3.7749e-08, 0, -3.7749e-08, -0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
-[node name="Spreaded" type="MeshInstance3D" parent="."]
+[node name="Buttered" parent="." instance=ExtResource("3_v7vfk")]
+transform = Transform3D(0.25, -2.18557e-08, -2.18557e-08, -2.18557e-08, -0.25, 0, -2.18557e-08, 1.91069e-15, -0.25, 0, 0, 0)
 visible = false
-mesh = SubResource("BoxMesh_0lrdi")
+
+[node name="Jammed" parent="." instance=ExtResource("4_7fccu")]
+transform = Transform3D(0.25, -2.18557e-08, -2.18557e-08, -2.18557e-08, -0.25, 0, -2.18557e-08, 1.91069e-15, -0.25, 0, 0, 0)
+visible = false
+
+[node name="Peanutted" parent="." instance=ExtResource("5_fq12r")]
+transform = Transform3D(0.25, -2.18557e-08, -2.18557e-08, -2.18557e-08, -0.25, 0, -2.18557e-08, 1.91069e-15, -0.25, 0, 0, 0)
+visible = false

@@ -193,10 +193,10 @@ func _on_small_slash_hitbox_body_entered(body):
 
 func _on_long_slash_hitbox_body_entered(body):
 	if body.owner.is_in_group("Spreadable"):
-		body.owner.spread()
+		body.owner.spread("Peanut")
 		triggerRecoil(upgradedAttackRecoil, body.global_position)
 
 func _on_circular_strike_hitbox_body_entered(body):
 	if body.owner.is_in_group("Spreadable"):
-		body.owner.spread()
+		body.owner.spread("Butter")
 		triggerRecoil(upgradedAttackRecoil, body.global_position)

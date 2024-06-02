@@ -8,10 +8,15 @@ signal spreaded
 func _ready():
 	pass # Replace with function body.
 
-func spread():
+func spread(spreadType):
 	if not is_spreaded:
 		$Unspreaded.hide()
-		$Spreaded.show()
 		is_spreaded = true
 		spreaded.emit()
+		if spreadType == "Butter":
+			$Buttered.show()
+		elif spreadType == "Peanut":
+			$Peanutted.show()
+		elif spreadType == "Jam":
+			$Jammed.show()
 
