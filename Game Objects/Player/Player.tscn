@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dr4nnud25g8tv"]
+[gd_scene load_steps=69 format=3 uid="uid://dr4nnud25g8tv"]
 
 [ext_resource type="PackedScene" uid="uid://b37uc1hsn5yf3" path="res://Game Objects/Player/PlayerProjectile.tscn" id="2_vagbp"]
 [ext_resource type="Texture2D" uid="uid://cgualn2kq3r75" path="res://Assets/Player Sprites/Attack/Base Attack Frame 1.png" id="3_75h5i"]
@@ -36,8 +36,11 @@
 [ext_resource type="Texture2D" uid="uid://cmm8jo1rqw22j" path="res://Assets/Player Sprites/Butter Jump.png" id="20_x1m4j"]
 [ext_resource type="Texture2D" uid="uid://bln8cimgndeuw" path="res://Assets/Player Sprites/Run/Peanut Run Frame 4.png" id="21_sbbog"]
 [ext_resource type="Texture2D" uid="uid://6ecei45qxyoq" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 1.png" id="25_j2m07"]
+[ext_resource type="Texture2D" uid="uid://bbc0o5kmsmlyo" path="res://Assets/Player Sprites/Sliding/Butter Slide Frame 1.png" id="25_of6s5"]
 [ext_resource type="Texture2D" uid="uid://jndhmw6rmi6e" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 2.png" id="26_h0tsh"]
+[ext_resource type="Texture2D" uid="uid://dxj33lfmdmqjg" path="res://Assets/Player Sprites/Sliding/Butter Slide Frame 2.png" id="26_ymkjt"]
 [ext_resource type="Texture2D" uid="uid://gsvfrbiptf1t" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 3.png" id="27_0lsnm"]
+[ext_resource type="Texture2D" uid="uid://ckovoli6ur6gb" path="res://Assets/Player Sprites/Sliding/Butter Slide Frame 3.png" id="27_kh0m0"]
 [ext_resource type="Texture2D" uid="uid://c11cot6iv4uw7" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 4.png" id="28_xua5d"]
 [ext_resource type="Texture2D" uid="uid://bgd7h3utb7022" path="res://Assets/Player Sprites/Jam Fall.png" id="29_yws3k"]
 [ext_resource type="Texture2D" uid="uid://dguv8o21q1oup" path="res://Assets/Player Sprites/Idle/Jam Idle.png" id="30_wmyq0"]
@@ -114,6 +117,20 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_of6s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ymkjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kh0m0")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u5pbx"]
@@ -174,6 +191,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_of6s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ymkjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kh0m0")
+}],
+"loop": true,
+"name": &"Slide",
 "speed": 5.0
 }]
 
@@ -236,6 +267,20 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_of6s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ymkjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kh0m0")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ytk6h"]
@@ -297,6 +342,20 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_of6s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ymkjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kh0m0")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 5.0
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o16lf"]
@@ -347,22 +406,24 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="BaseAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ln0rg")
-animation = &"Idle"
+animation = &"Slide"
 
 [node name="ButterAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_u5pbx")
-animation = &"Idle"
+animation = &"Slide"
 
 [node name="JamAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_0vexd")
-animation = &"Idle"
+animation = &"Slide"
 
 [node name="PeanutAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_ytk6h")
-animation = &"Idle"
+animation = &"Slide"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Anim"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

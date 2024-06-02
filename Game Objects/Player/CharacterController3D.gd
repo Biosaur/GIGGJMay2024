@@ -189,7 +189,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, currTraction)
 			
 		if isSliding:
-			setAnimation("Jump")
+			setAnimation("Slide")
 			velocity.x = lerp(velocity.x, oldXVel, slideSlipperiness)
 		
 		if not is_on_floor():
