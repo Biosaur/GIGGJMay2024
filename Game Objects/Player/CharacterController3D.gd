@@ -178,6 +178,7 @@ func _on_hitbox_area_entered(area):
 		return
 
 func die():
+	currentPowerup = PowerupClass.NONE
 	dead.emit()
 
 func progress():
