@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="1_a10bt"]
 [ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="2_irpx7"]
 [ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="3_2nbg3"]
-[ext_resource type="PackedScene" uid="uid://bvskygu8npbhu" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="4_0leif"]
+[ext_resource type="PackedScene" uid="uid://bperbnwisvful" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="4_0leif"]
 [ext_resource type="PackedScene" uid="uid://c80b5emtl3e2h" path="res://Game Objects/Powerup/ButterPowerup.tscn" id="4_5rt4w"]
 [ext_resource type="PackedScene" uid="uid://cktd1i3m53oe5" path="res://Game Objects/Powerup/JamPowerup.tscn" id="6_6rmbo"]
 [ext_resource type="PackedScene" uid="uid://b8nm5l2eky3ss" path="res://Game Objects/Platforms/Spreadable.tscn" id="7_2nmic"]
