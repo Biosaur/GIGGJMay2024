@@ -11,7 +11,7 @@ signal spreadWarning
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = $Level/Timer
-	$Level/Timer._timer_start()
+	timer._timer_start()
 	timer_text = $Level/Time_remaining
 	
 	$Level/Player.next_level.connect(_on_next_level)
@@ -35,7 +35,7 @@ func _on_next_level():
 		for s in spreadables:
 			s.spreaded.connect(_on_spread)
 		
-		
+		# Re-initialize the timer for the next level
 		timer = $Level/Timer
 		$Level/Timer._timer_start()
 		timer_text = $Level/Time_remaining
