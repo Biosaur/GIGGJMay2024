@@ -5,8 +5,8 @@
 [ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="3_3ognb"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="3_nhjc3"]
 [ext_resource type="PackedScene" uid="uid://b8nm5l2eky3ss" path="res://Game Objects/Platforms/Spreadable.tscn" id="3_ny6lc"]
-[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="6_76h10"]
-[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="6_iu0yk"]
+[ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="6_76h10"]
+[ext_resource type="PackedScene" uid="uid://bvskygu8npbhu" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="6_iu0yk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]
 size = Vector3(64.8997, 1, 2)
