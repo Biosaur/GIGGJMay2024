@@ -28,7 +28,7 @@ script = SubResource("GDScript_sjw6w")
 [node name="PowerupCollision" parent="." groups=["Jam"] instance=ExtResource("1_1c36l")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Jam"]]
-transform = Transform3D(0.344116, 0.305326, 0.195858, -0.362444, 0.278402, 0.202798, 0.0147842, -0.281547, 0.412932, 0, 0, 0)
+transform = Transform3D(0.20647, 0.183196, 0.117515, -0.217466, 0.167041, 0.121679, 0.00887053, -0.168928, 0.247759, 0, 0, 0)
 script = ExtResource("2_0p025")
 
 [node name="Jam Pickup" parent="MeshInstance3D" instance=ExtResource("3_y0biy")]

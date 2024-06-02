@@ -403,7 +403,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sr5ct"]
 _data = {
-"Slippery": SubResource("Animation_f4qc2")
+"Duration Bar": SubResource("Animation_f4qc2")
 }
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
@@ -488,6 +488,19 @@ transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 visible = false
 texture = ExtResource("48_pcv8o")
 script = ExtResource("49_40s7c")
+
+[node name="Antigrav Rect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.555
+anchor_right = 0.45
+anchor_bottom = 0.575
+color = Color(0.533, 0, 0.82, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Antigrav Rect"]
+libraries = {
+"": SubResource("AnimationLibrary_sr5ct")
+}
 
 [node name="Slippery Rect" type="ColorRect" parent="."]
 anchors_preset = -1
