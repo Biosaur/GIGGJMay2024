@@ -1,17 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://chrddjapv3404"]
+[gd_scene load_steps=7 format=3 uid="uid://chrddjapv3404"]
 
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="1_a10bt"]
 [ext_resource type="MeshLibrary" uid="uid://1tphqq1hteuj" path="res://Game Objects/Platforms/Platform.meshlib" id="2_irpx7"]
-[ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="3_2nbg3"]
-[ext_resource type="PackedScene" uid="uid://bvskygu8npbhu" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="4_0leif"]
+[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="3_2nbg3"]
+[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="4_0leif"]
 [ext_resource type="PackedScene" uid="uid://c80b5emtl3e2h" path="res://Game Objects/Powerup/ButterPowerup.tscn" id="4_5rt4w"]
 [ext_resource type="PackedScene" uid="uid://cktd1i3m53oe5" path="res://Game Objects/Powerup/JamPowerup.tscn" id="6_6rmbo"]
-[ext_resource type="PackedScene" uid="uid://b8nm5l2eky3ss" path="res://Game Objects/Platforms/Spreadable.tscn" id="7_2nmic"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_a10bt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.04914, 0)
+movementSpeed = 8.0
+traction = 1.5
+airTraction = 0.7
+jumpHeight = 3.0
+jumpTimeToPeak = 0.4
+jumpTimeToFall = 0.3
+dashDistance = 5.0
+dashDuration = 0.2
+dashCarryover = 0.3
+slideMultiplier = 4.0
+slideDuration = 3.0
+slideSlipperiness = 0.2
+attackDuration = 0.2
+attackCooldown = 0.3
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -36,6 +49,3 @@ objectToSpawn = ExtResource("4_5rt4w")
 [node name="PowerupSpawner3" parent="." instance=ExtResource("3_2nbg3")]
 transform = Transform3D(1, 0, 0, 0, 0.999445, 0.0333122, 0, -0.0333122, 0.999445, -18.9129, 5.49251, 0)
 objectToSpawn = ExtResource("6_6rmbo")
-
-[node name="Spreadable" parent="." instance=ExtResource("7_2nmic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.30949, 0)

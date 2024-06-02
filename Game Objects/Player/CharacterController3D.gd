@@ -35,6 +35,8 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 @export var attackCooldown : float = 0.3
 
 @export var projectileToFire : PackedScene
+@export var attackRecoil : float = 10
+@export var upgradedAttackRecoil : float = 20
 
 signal dead
 signal next_level
@@ -81,6 +83,17 @@ func startAttackTimer():
 	$CircularStrikeHitbox.get_child(0).disabled = true
 	$LongSlashHitbox.get_child(0).disabled = true
 	isAttacking = false
+	
+func triggerRecoil(strength : float, recoilFromGlobalPosition : Vector3):
+	velocity = strength * (global_position - recoilFromGlobalPosition).normalized()
+
+func _ready():
+	$SmallSlashHitbox.get_child(1).visible = false
+	$CircularStrikeHitbox.get_child(1).visible = false
+	$LongSlashHitbox.get_child(1).visible = false
+	$SmallSlashHitbox.get_child(0).disabled = true
+	$CircularStrikeHitbox.get_child(0).disabled = true
+	$LongSlashHitbox.get_child(0).disabled = true
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -110,6 +123,7 @@ func _physics_process(delta):
 			add_sibling(projectile)
 			projectile.global_position = global_position
 			projectile.velocity = Vector2(slashDirection.x, -slashDirection.y) * 20
+			triggerRecoil(attackRecoil, global_position + Vector3(slashDirection.x, -slashDirection.y, 0))
 	if isDashing:
 		velocity = dashDirection * dashVelocity
 	else:
@@ -164,13 +178,25 @@ func _on_hitbox_area_entered(area):
 		progress()
 		return
 
-func _on_hitbox_body_entered(body):
-	if body.owner.is_in_group("Spreadable"):
-		body.owner.spread()
-
 func die():
+	currentPowerup = PowerupClass.NONE
 	dead.emit()
 
 func progress():
 	next_level.emit()
 
+
+func _on_small_slash_hitbox_body_entered(body):
+	if body.owner.is_in_group("Spreadable"):
+		# No condiment, don't spread
+		triggerRecoil(attackRecoil, body.global_position)
+
+func _on_long_slash_hitbox_body_entered(body):
+	if body.owner.is_in_group("Spreadable"):
+		body.owner.spread()
+		triggerRecoil(upgradedAttackRecoil, body.global_position)
+
+func _on_circular_strike_hitbox_body_entered(body):
+	if body.owner.is_in_group("Spreadable"):
+		body.owner.spread()
+		triggerRecoil(upgradedAttackRecoil, body.global_position)
