@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dr4nnud25g8tv"]
+[gd_scene load_steps=78 format=3 uid="uid://dr4nnud25g8tv"]
 
 [ext_resource type="PackedScene" uid="uid://b37uc1hsn5yf3" path="res://Game Objects/Player/PlayerProjectile.tscn" id="2_vagbp"]
 [ext_resource type="Texture2D" uid="uid://cgualn2kq3r75" path="res://Assets/Player Sprites/Attack/Base Attack Frame 1.png" id="3_75h5i"]
@@ -20,12 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://bvgcr8k2ohal1" path="res://Assets/Player Sprites/Run/Butter Run Frame 2.png" id="11_vpe45"]
 [ext_resource type="Texture2D" uid="uid://bxiqc8xlofscc" path="res://Assets/Player Sprites/Run/Butter Run Frame 3.png" id="12_aitr1"]
 [ext_resource type="Texture2D" uid="uid://w4pv01h2v1cm" path="res://Assets/Player Sprites/Run/Butter Run Frame 4.png" id="13_tpfj8"]
+[ext_resource type="Texture2D" uid="uid://81mn6216fs30" path="res://Assets/Player Sprites/Sliding/Base Slide Frame 1.png" id="14_h8gcl"]
 [ext_resource type="Texture2D" uid="uid://17kugvag821u" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 1.png" id="14_h781d"]
 [ext_resource type="Texture2D" uid="uid://qxhexx6qg1n1" path="res://Assets/Player Sprites/Run/Jam Run Frame 1.png" id="14_thpux"]
+[ext_resource type="Texture2D" uid="uid://dmqli4ffwdpry" path="res://Assets/Player Sprites/Sliding/Base Slide Frame 2.png" id="15_5ctsu"]
 [ext_resource type="Texture2D" uid="uid://b3w18qx2hb6um" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 2.png" id="15_k51jx"]
 [ext_resource type="Texture2D" uid="uid://c6kbfxl61co2r" path="res://Assets/Player Sprites/Run/Jam Run Frame 2.png" id="15_ld4ck"]
 [ext_resource type="Texture2D" uid="uid://705n1munwbet" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 3.png" id="16_10pod"]
 [ext_resource type="Texture2D" uid="uid://clfgwnw2ou672" path="res://Assets/Player Sprites/Run/Jam Run Frame 3.png" id="16_cyos5"]
+[ext_resource type="Texture2D" uid="uid://cksteogggvxr1" path="res://Assets/Player Sprites/Sliding/Base Slide Frame 3.png" id="16_vntmn"]
 [ext_resource type="Texture2D" uid="uid://c87wx48bmnweb" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 4.png" id="17_8ykih"]
 [ext_resource type="Texture2D" uid="uid://byx3vlsljub8k" path="res://Assets/Player Sprites/Run/Jam Run Frame 4.png" id="17_nlutx"]
 [ext_resource type="Texture2D" uid="uid://sfejrtitfch6" path="res://Assets/Player Sprites/Run/Peanut Run Frame 1.png" id="18_3cxy1"]
@@ -36,8 +39,11 @@
 [ext_resource type="Texture2D" uid="uid://cmm8jo1rqw22j" path="res://Assets/Player Sprites/Butter Jump.png" id="20_x1m4j"]
 [ext_resource type="Texture2D" uid="uid://bln8cimgndeuw" path="res://Assets/Player Sprites/Run/Peanut Run Frame 4.png" id="21_sbbog"]
 [ext_resource type="Texture2D" uid="uid://6ecei45qxyoq" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 1.png" id="25_j2m07"]
+[ext_resource type="Texture2D" uid="uid://bbc0o5kmsmlyo" path="res://Assets/Player Sprites/Sliding/Butter Slide Frame 1.png" id="25_of6s5"]
 [ext_resource type="Texture2D" uid="uid://jndhmw6rmi6e" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 2.png" id="26_h0tsh"]
+[ext_resource type="Texture2D" uid="uid://dxj33lfmdmqjg" path="res://Assets/Player Sprites/Sliding/Butter Slide Frame 2.png" id="26_ymkjt"]
 [ext_resource type="Texture2D" uid="uid://gsvfrbiptf1t" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 3.png" id="27_0lsnm"]
+[ext_resource type="Texture2D" uid="uid://ckovoli6ur6gb" path="res://Assets/Player Sprites/Sliding/Butter Slide Frame 3.png" id="27_kh0m0"]
 [ext_resource type="Texture2D" uid="uid://c11cot6iv4uw7" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 4.png" id="28_xua5d"]
 [ext_resource type="Texture2D" uid="uid://bgd7h3utb7022" path="res://Assets/Player Sprites/Jam Fall.png" id="29_yws3k"]
 [ext_resource type="Texture2D" uid="uid://dguv8o21q1oup" path="res://Assets/Player Sprites/Idle/Jam Idle.png" id="30_wmyq0"]
@@ -48,12 +54,18 @@
 [ext_resource type="Texture2D" uid="uid://ci2khsp8xcj3p" path="res://Assets/Player Sprites/Attack/Peanut Attack Frame 4.png" id="39_v5c3d"]
 [ext_resource type="Texture2D" uid="uid://dmoh38gvdklun" path="res://Assets/Player Sprites/Peanut Fall.png" id="40_684ce"]
 [ext_resource type="Texture2D" uid="uid://dtxwxf8il8238" path="res://Assets/Player Sprites/Idle/Peanut Idle.png" id="41_srday"]
+[ext_resource type="Texture2D" uid="uid://h231iacr0ux2" path="res://Assets/Player Sprites/Sliding/Jam Slide Frame 1.png" id="42_6p4yu"]
 [ext_resource type="Texture2D" uid="uid://d0moc4ksy42c2" path="res://Assets/Player Sprites/Peanut Jump.png" id="42_vyto2"]
+[ext_resource type="Texture2D" uid="uid://blkber8l420rt" path="res://Assets/Player Sprites/Sliding/Jam Slide Frame 2.png" id="43_lkuud"]
+[ext_resource type="Texture2D" uid="uid://dyrm7wuhsfd0s" path="res://Assets/Player Sprites/Sliding/Jam Slide Frame 3.png" id="44_mn2ei"]
 [ext_resource type="Texture2D" uid="uid://hxno3bponsqu" path="res://Assets/Attack Effects/Peanut Long Attack.png" id="47_hna62"]
 [ext_resource type="Texture2D" uid="uid://sylmjt116qys" path="res://Assets/Attack Effects/Butter Circle Attack.png" id="48_pcv8o"]
 [ext_resource type="Script" path="res://Game Objects/Player/CircularSlash.gd" id="49_40s7c"]
 [ext_resource type="AudioStream" uid="uid://7egyxxuctkya" path="res://Assets/Sound Effects/Item_Pickup_1.wav" id="50_i03a3"]
 [ext_resource type="AudioStream" uid="uid://bdeu4fijt5yrx" path="res://Assets/Sound Effects/Spread_2.ogg" id="51_kypa5"]
+[ext_resource type="Texture2D" uid="uid://4byikltyr7bm" path="res://Assets/Player Sprites/Sliding/Peanut Slide Frame 1.png" id="56_6uhr4"]
+[ext_resource type="Texture2D" uid="uid://bj4eixb2w3gho" path="res://Assets/Player Sprites/Sliding/Peanut Slide Frame 2.png" id="57_fa13n"]
+[ext_resource type="Texture2D" uid="uid://da3avp4aq70py" path="res://Assets/Player Sprites/Sliding/Peanut Slide Frame 3.png" id="58_x8jqp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ln0rg"]
 animations = [{
@@ -113,6 +125,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_h8gcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5ctsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vntmn")
+}],
+"loop": true,
+"name": &"Slide",
 "speed": 5.0
 }]
 
@@ -175,6 +201,20 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_of6s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ymkjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kh0m0")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vexd"]
@@ -235,6 +275,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_6p4yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_lkuud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_mn2ei")
+}],
+"loop": true,
+"name": &"Slide",
 "speed": 5.0
 }]
 
@@ -297,6 +351,20 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("56_6uhr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_fa13n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_x8jqp")
+}],
+"loop": true,
+"name": &"Slide",
+"speed": 5.0
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o16lf"]
@@ -347,22 +415,25 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="BaseAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ln0rg")
-animation = &"Idle"
+animation = &"Slide"
+frame_progress = 0.366563
 
 [node name="ButterAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_u5pbx")
-animation = &"Idle"
+animation = &"Slide"
 
 [node name="JamAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_0vexd")
-animation = &"Idle"
+animation = &"Slide"
 
 [node name="PeanutAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_ytk6h")
-animation = &"Idle"
+animation = &"Slide"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Anim"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

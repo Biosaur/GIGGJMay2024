@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfxkm0q01w1xm"
-path.s3tc="res://.godot/imported/Base Attack Frame 3.png-553097b1b8e89340f489f23febd8e23b.s3tc.ctex"
+uid="uid://dxj33lfmdmqjg"
+path.s3tc="res://.godot/imported/Butter Slide Frame 2.png-9a6dbd2c0f8186b62e6a605bf10b74b7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Player Sprites/Attack/Base Attack Frame 3.png"
-dest_files=["res://.godot/imported/Base Attack Frame 3.png-553097b1b8e89340f489f23febd8e23b.s3tc.ctex"]
+source_file="res://Assets/Player Sprites/Sliding/Butter Slide Frame 2.png"
+dest_files=["res://.godot/imported/Butter Slide Frame 2.png-9a6dbd2c0f8186b62e6a605bf10b74b7.s3tc.ctex"]
 
 [params]
 
