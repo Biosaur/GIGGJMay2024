@@ -15,7 +15,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gta60"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_o16lf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkbs4"]
 albedo_texture = ExtResource("2_igv54")
@@ -83,8 +83,7 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_ln0rg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
-visible = false
-shape = SubResource("CapsuleShape3D_gta60")
+shape = SubResource("BoxShape3D_o16lf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Player"]]
 mesh = SubResource("CapsuleMesh_c32ck")

@@ -199,4 +199,4 @@ func _on_long_slash_hitbox_body_entered(body):
 func _on_circular_strike_hitbox_body_entered(body):
 	if body.owner.is_in_group("Spreadable"):
 		body.owner.spread("Butter")
-		triggerRecoil(upgradedAttackRecoil, body.global_position)
+		triggerRecoil(upgradedAttackRecoil * 1.3, body.global_position)
