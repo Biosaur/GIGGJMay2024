@@ -31,6 +31,8 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 @export var slideDuration : float = 3.0
 @export var slideSlipperiness : float = 0.2
 
+@export var antigravDuration : float = 3.0
+
 @export var attackDuration : float = 0.1
 @export var attackCooldown : float = 0.3
 
@@ -45,6 +47,7 @@ var currentPowerup = PowerupClass.NONE
 var dashDirection = Vector3()
 var isDashing = false
 var isSliding = false
+var isAntigrav = false
 
 var isAttacking = false
 var canAttack = true
@@ -73,6 +76,12 @@ func setAnimationFlip(onOrOff : bool):
 	$Anim/JamAnimation.flip_h = onOrOff
 	$Anim/PeanutAnimation.flip_h = onOrOff
 
+func setAnimationVertFlip(onOrOff : bool):
+	$Anim/BaseAnimation.flip_v = onOrOff
+	$Anim/ButterAnimation.flip_v = onOrOff
+	$Anim/JamAnimation.flip_v = onOrOff
+	$Anim/PeanutAnimation.flip_v = onOrOff
+
 func startDashTimer():
 	isDashing = true
 	await get_tree().create_timer(dashDuration).timeout
@@ -83,11 +92,19 @@ func startSlideTimer():
 	isSliding = true
 	movementSpeed *= slideMultiplier
 	floor_max_angle = deg_to_rad(85)
-	$"Slippery Rect/AnimationPlayer".play("Slippery")
+	$"Slippery Rect/AnimationPlayer".play("Duration Bar")
 	await get_tree().create_timer(slideDuration).timeout
 	isSliding = false
 	movementSpeed /= slideMultiplier
 	floor_max_angle = deg_to_rad(45)
+
+func startAntigravTimer():
+	isAntigrav = true
+	$"Antigrav Rect/AnimationPlayer".play("Duration Bar")
+	setAnimationVertFlip(true)
+	await get_tree().create_timer(antigravDuration).timeout
+	setAnimationVertFlip(false)
+	isAntigrav = false
 
 func startAttackCooldown():
 	canAttack = false
@@ -157,12 +174,20 @@ func _physics_process(delta):
 	if isDashing:
 		velocity = dashDirection * dashVelocity
 	else:
-		if not is_on_floor():
-			velocity.y += (jumpGravity if velocity.y > 0.0 else fallGravity) * delta
+		
+		if not isAntigrav:
+			if not is_on_floor():
+				velocity.y += (jumpGravity if velocity.y > 0.0 else fallGravity) * delta
+		else:
+			if not is_on_ceiling():
+				velocity.y -= (jumpGravity if velocity.y < 0.0 else fallGravity) * delta
 
 		# Handle jump.
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = jumpVelocity
+		if Input.is_action_just_pressed("jump"):
+			if not isAntigrav and is_on_floor():
+				velocity.y = jumpVelocity
+			elif is_on_ceiling():
+				velocity.y = -jumpVelocity
 			$SoundEffects/Jump.play()
 
 		# Get the input direction and handle the movement/deceleration.
@@ -204,6 +229,8 @@ func _physics_process(delta):
 				$SoundEffects/Dash.play()
 			if currentPowerup == PowerupClass.BUTTER:
 				startSlideTimer()
+			if currentPowerup == PowerupClass.JAM:
+				startAntigravTimer()
 			currentPowerup = PowerupClass.NONE
 			updateAnimationFlavour()
 		
