@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cktd1i3m53oe5"]
+
+[ext_resource type="PackedScene" uid="uid://bqyvi3mi8lbtk" path="res://Game Objects/Powerup/PowerupCollision.tscn" id="1_1c36l"]
+[ext_resource type="Script" path="res://Game Objects/Powerup/PowerupAnimation.gd" id="2_0p025"]
+
+[sub_resource type="GDScript" id="GDScript_sjw6w"]
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_powerup_collision_player_entered():
+	queue_free()
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nw06"]
+albedo_color = Color(0.364355, 0.00120616, 0.872548, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qgvmv"]
+material = SubResource("StandardMaterial3D_3nw06")
+
+[node name="JamPowerup" type="Node3D" groups=["Jam"]]
+script = SubResource("GDScript_sjw6w")
+
+[node name="PowerupCollision" parent="." groups=["Jam"] instance=ExtResource("1_1c36l")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Jam"]]
+transform = Transform3D(0.303768, 0.250805, 0.172893, -0.319947, 0.228688, 0.179019, 0.0130507, -0.231272, 0.364515, 0, 0, 0)
+mesh = SubResource("SphereMesh_qgvmv")
+script = ExtResource("2_0p025")
+
+[connection signal="playerEntered" from="PowerupCollision" to="." method="_on_powerup_collision_player_entered"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct1qfxcgbiljj"]
+[gd_scene load_steps=7 format=3 uid="uid://b3blfmqfj3jt4"]
 
 [ext_resource type="ArrayMesh" uid="uid://dum2jmhs2vrvm" path="res://Assets/Platform Meshes/Cube_Tile.obj" id="1_2pne1"]
 [ext_resource type="ArrayMesh" uid="uid://c0k6iage8sbqp" path="res://Assets/Platform Meshes/1by1_Slope_Tile.obj" id="4_cpcse"]
 [ext_resource type="PrismMesh" uid="uid://rwrgiwhec1qf" path="res://Assets/Platform Meshes/1x3slopemesh.tres" id="4_tpdas"]
-[ext_resource type="Shape3D" uid="uid://wyjxgvvw77wf" path="res://Game Objects/Platforms/Slope1by1CollisionShape.tres" id="5_qbk5g"]
-[ext_resource type="Shape3D" uid="uid://f1kqcuvsj0uq" path="res://Game Objects/Platforms/Slope3by3CollisionShape.tres" id="7_fogqw"]
+[ext_resource type="Shape3D" path="res://Game Objects/Platforms/Slope1by1CollisionShape.tres" id="5_qbk5g"]
+[ext_resource type="Shape3D" path="res://Game Objects/Platforms/Slope3by3CollisionShape.tres" id="7_fogqw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ga273"]
 

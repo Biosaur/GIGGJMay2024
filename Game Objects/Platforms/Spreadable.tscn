@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs4tne7ti2kbu"]
+[gd_scene load_steps=5 format=3 uid="uid://b8nm5l2eky3ss"]
 
 [ext_resource type="Script" path="res://Game Objects/Platforms/Spreadable.gd" id="1_wtion"]
 

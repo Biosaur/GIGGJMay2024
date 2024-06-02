@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b37uc1hsn5yf3"]
+
+[ext_resource type="Script" path="res://Game Objects/Player/PlayerProjectile.gd" id="1_o7tab"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y5arp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1grvb"]
+albedo_color = Color(0.417219, 0.14525, 0.663345, 1)
+metallic_specular = 0.0
+clearcoat_enabled = true
+refraction_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_d55bb"]
+material = SubResource("StandardMaterial3D_1grvb")
+radius = 0.25
+height = 0.5
+
+[node name="PlayerProjectile" type="Area3D"]
+script = ExtResource("1_o7tab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_y5arp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_d55bb")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

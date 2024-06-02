@@ -54,6 +54,20 @@ rings = 8
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("3_yudc1")
+movementSpeed = null
+traction = null
+airTraction = null
+jumpHeight = null
+jumpTimeToPeak = null
+jumpTimeToFall = null
+dashDistance = null
+dashDuration = null
+dashCarryover = null
+slideMultiplier = null
+slideDuration = null
+slideSlipperiness = null
+attackDuration = null
+attackCooldown = null
 projectileToFire = ExtResource("2_vagbp")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." groups=["Player"]]
