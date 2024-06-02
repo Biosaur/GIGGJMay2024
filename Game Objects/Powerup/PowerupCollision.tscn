@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://Game Objects/Powerup/PowerupCollision.gd" id="1_h8pn8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3dkfo"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_7dwrm"]
+radius = 1.3
 
 [node name="PowerupCollision" type="Area3D" groups=["Powerup"]]
 collision_layer = 2
 script = ExtResource("1_h8pn8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Powerup"]]
-shape = SubResource("BoxShape3D_3dkfo")
+shape = SubResource("SphereShape3D_7dwrm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
