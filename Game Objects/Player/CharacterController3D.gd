@@ -124,6 +124,8 @@ func _physics_process(delta):
 			projectile.global_position = global_position
 			projectile.velocity = Vector2(slashDirection.x, -slashDirection.y) * 20
 			triggerRecoil(attackRecoil, global_position + Vector3(slashDirection.x, -slashDirection.y, 0))
+			$SoundEffects/Spread_1.play()
+			
 	if isDashing:
 		velocity = dashDirection * dashVelocity
 	else:
@@ -170,6 +172,7 @@ func _physics_process(delta):
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("Powerup"):
+		$SoundEffects/Item_Pickup.play()
 		if area.owner.is_in_group("Butter"):
 			currentPowerup = PowerupClass.BUTTER
 		elif area.owner.is_in_group("PeanutButter"):
