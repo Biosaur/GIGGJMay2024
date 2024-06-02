@@ -7,7 +7,9 @@ enum PowerupClass {
 }
 
 const LEVEL_PATH = "res://Level/Levels/Level"
-@export var movementSpeed : float = 5.0
+@export var movementSpeed : float = 8.0
+@export var traction : float = 1.5
+@export var airTraction : float = 0.7
 
 @export var jumpHeight : float = 3.0
 @export var jumpTimeToPeak : float = 0.4
@@ -19,13 +21,13 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 
 @export var dashDistance : float = 5.0
 @export var dashDuration : float = 0.2
-@export var dashCarryover : float = 5
+@export var dashCarryover : float = 0.3
 
 @onready var dashVelocity : float = dashDistance / dashDuration
 
 @export var slideMultiplier : float = 4.0
 @export var slideDuration : float = 3.0
-@export var slideSlipperiness : float = 0.95
+@export var slideSlipperiness : float = 0.97
 
 signal dead
 signal next_level
@@ -39,7 +41,7 @@ func startDashTimer():
 	isDashing = true
 	await get_tree().create_timer(dashDuration).timeout
 	isDashing = false
-	velocity = dashDirection * dashCarryover
+	velocity = dashDirection * dashVelocity * dashCarryover
 
 func startSlideTimer():
 	isSliding = true
@@ -69,22 +71,27 @@ func _physics_process(delta):
 
 		# Get the input direction and handle the movement/deceleration.
 		var oldXVel = velocity.x
-		if direction:
-			velocity.x = (-1.0 if direction.x < 0.0 else 1.0 if direction.x > 0.0 else 0) * direction.length() * movementSpeed
+		var currTraction = traction if is_on_floor() else airTraction
+		if direction.x != 0:
+			if direction.x < 0.0:
+				if velocity.x > -movementSpeed:
+					velocity.x = move_toward(velocity.x, -movementSpeed, currTraction)
+			else:
+				if velocity.x < movementSpeed:
+					velocity.x = move_toward(velocity.x, movementSpeed, currTraction)
 		else:
-			velocity.x = move_toward(velocity.x, 0, movementSpeed)
+			velocity.x = move_toward(velocity.x, 0, currTraction)
 			
 		if isSliding:
 			velocity.x = lerp(velocity.x, oldXVel, slideSlipperiness)
 
 		if Input.is_action_just_pressed("ability"):
 			if currentPowerup == PowerupClass.PEANUTBUTTER:
-				currentPowerup = PowerupClass.NONE
 				dashDirection = Vector3(direction.x, -direction.y, 0)
 				startDashTimer()
 			if currentPowerup == PowerupClass.BUTTER:
-				currentPowerup = PowerupClass.NONE
 				startSlideTimer()
+			currentPowerup = PowerupClass.NONE
 	
 	move_and_slide()
 
