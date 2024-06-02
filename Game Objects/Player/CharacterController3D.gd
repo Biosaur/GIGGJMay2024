@@ -84,7 +84,15 @@ func startAttackTimer():
 	isAttacking = false
 	
 func triggerRecoil(strength : float, recoilFromGlobalPosition : Vector3):
-	velocity += strength * (global_position - recoilFromGlobalPosition).normalized()
+	velocity = strength * (global_position - recoilFromGlobalPosition).normalized()
+
+func _ready():
+	$SmallSlashHitbox.get_child(1).visible = false
+	$CircularStrikeHitbox.get_child(1).visible = false
+	$LongSlashHitbox.get_child(1).visible = false
+	$SmallSlashHitbox.get_child(0).disabled = true
+	$CircularStrikeHitbox.get_child(0).disabled = true
+	$LongSlashHitbox.get_child(0).disabled = true
 
 func _physics_process(delta):
 	# Add the gravity.
