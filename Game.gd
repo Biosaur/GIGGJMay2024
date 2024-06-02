@@ -22,10 +22,15 @@ func _on_next_level():
 	if numSpreadables == numSpreaded:
 		var next_level_path = LEVEL_PATH + str($Level.scene_file_path.to_int() + 1) + ".tscn"
 		var newLevel:PackedScene = load(next_level_path)
+		get_tree().paused = true
+		$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe1")
+		await $"Control/Screen Transition Rect/AnimationPlayer".animation_finished
 		remove_child($Level)
 		var current_level = newLevel.instantiate()
 		current_level.name = "Level"
 		add_child(current_level)
+		$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe2")
+		get_tree().paused = false
 		$Level/Player.next_level.connect(_on_next_level)
 		$Level/Player.dead.connect(_on_player_death)
 		
@@ -57,7 +62,9 @@ func _on_pause_button_pressed():
 func _on_player_death():
 	$Camera3D.global_position = $Level/Player/SpringArm3D/Camera3D.global_position
 	$Camera3D.make_current()
+	$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe1")
 	await get_tree().create_timer($Level.respawnTime).timeout
+	$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe2")
 	$Level/Player.position = $Level.startLocation
 	$Level/Player/SpringArm3D/Camera3D.make_current()
 

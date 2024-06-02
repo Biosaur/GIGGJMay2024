@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var startLocation : Vector3
-@export var respawnTime : float = 1.0
+@export var respawnTime : float = 0.5
 
 
 # Called when the node enters the scene tree for the first time.
