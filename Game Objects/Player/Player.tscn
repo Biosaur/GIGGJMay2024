@@ -58,19 +58,19 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_ln0rg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("3_75h5i")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("4_i5esy")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("5_1q36p")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("6_7r5mc")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -119,19 +119,19 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_u5pbx"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("14_h781d")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("15_k51jx")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("16_10pod")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("17_8ykih")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -180,19 +180,19 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vexd"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("25_j2m07")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("26_h0tsh")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("27_0lsnm")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("28_xua5d")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -241,19 +241,19 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_ytk6h"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("36_vx5b4")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("37_e3fcy")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("38_thv88")
 }, {
-"duration": 1.0,
+"duration": 0.38,
 "texture": ExtResource("39_v5c3d")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 5.0
 }, {
@@ -347,23 +347,22 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="BaseAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ln0rg")
-animation = &"Attack"
-frame_progress = 0.824725
+animation = &"Idle"
 
 [node name="ButterAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_u5pbx")
-animation = &"Attack"
+animation = &"Idle"
 
 [node name="JamAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_0vexd")
-animation = &"Run"
+animation = &"Idle"
 
 [node name="PeanutAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 visible = false
 sprite_frames = SubResource("SpriteFrames_ytk6h")
-animation = &"Run"
+animation = &"Idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

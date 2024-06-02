@@ -60,17 +60,7 @@ func updateAnimationFlavour():
 	$Anim/JamAnimation.visible = currentPowerup == PowerupClass.JAM
 	$Anim/PeanutAnimation.visible = currentPowerup == PowerupClass.PEANUTBUTTER
 
-func setAnimationSpeedScale(val : float):
-	$Anim/BaseAnimation.speed_scale = val
-	$Anim/ButterAnimation.speed_scale = val
-	$Anim/JamAnimation.speed_scale = val
-	$Anim/PeanutAnimation.speed_scale = val
-
 func setAnimation(animation):
-	if animation == "Attack":
-		setAnimationSpeedScale(1 / attackAnimDuration)
-	else:
-		setAnimationSpeedScale(1)
 	if not isAttackAnimPlaying or animation == "Attack":
 		$Anim/BaseAnimation.play(animation)
 		$Anim/ButterAnimation.play(animation)
@@ -105,11 +95,9 @@ func startAttackCooldown():
 	canAttack = true
 
 func startAttackAnimation():
-	$Anim.position.y = 1.385 / 2
 	setAnimation("Attack")
 	isAttackAnimPlaying = true
 	await get_tree().create_timer(attackAnimDuration).timeout
-	$Anim.position.y = 0
 	isAttackAnimPlaying = false
 
 func startAttackTimer():
