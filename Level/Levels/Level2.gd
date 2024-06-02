@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var startLocation : Vector3
+@export var respawnTime : float = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,4 +22,4 @@ func _on_timer_timeout() -> void:
 # debug statements
 func _debug():
 	return
-	#print_debug("time left:", $Timer.time_left)
+	#print_debug("time left:", $Timer.time_lef

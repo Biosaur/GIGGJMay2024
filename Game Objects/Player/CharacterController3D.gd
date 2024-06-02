@@ -54,8 +54,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	position.z = 0.5
 	velocity.z = 0
-	
-	
+
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if isDashing:
@@ -109,7 +108,6 @@ func _on_hitbox_body_entered(body):
 
 func die():
 	dead.emit()
-	queue_free()
 
 func progress():
 	next_level.emit()

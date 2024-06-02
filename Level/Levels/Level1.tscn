@@ -15,6 +15,7 @@ size = Vector3(2, 19, 3)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_tt362")
+startLocation = Vector3(-25, 2, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_75fai")]
 transform = Transform3D(0.565012, 0, 0, 0, 0.565012, 0, 0, 0, 0.565012, -25, 2, 0)
