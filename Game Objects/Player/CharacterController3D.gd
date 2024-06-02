@@ -4,9 +4,11 @@ enum PowerupClass {
 	NONE,
 	BUTTER,
 	PEANUTBUTTER,
+	JAM
 }
 
 const LEVEL_PATH = "res://Level/Levels/Level"
+
 @export var movementSpeed : float = 8.0
 @export var traction : float = 1.5
 @export var airTraction : float = 0.7
@@ -27,7 +29,12 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 
 @export var slideMultiplier : float = 4.0
 @export var slideDuration : float = 3.0
-@export var slideSlipperiness : float = 0.97
+@export var slideSlipperiness : float = 0.2
+
+@export var attackDuration : float = 0.2
+@export var attackCooldown : float = 0.3
+
+@export var projectileToFire : PackedScene
 
 signal dead
 signal next_level
@@ -36,6 +43,11 @@ var currentPowerup = PowerupClass.NONE
 var dashDirection = Vector3()
 var isDashing = false
 var isSliding = false
+
+var isAttacking = false
+var canAttack = true
+
+var lastFacedDirection = Vector2(1, 0)
 
 func startDashTimer():
 	isDashing = true
@@ -52,6 +64,23 @@ func startSlideTimer():
 	movementSpeed /= slideMultiplier
 	floor_max_angle = deg_to_rad(45)
 
+func startAttackCooldown():
+	canAttack = false
+	await get_tree().create_timer(attackCooldown).timeout
+	canAttack = true
+
+func startAttackTimer():
+	isAttacking = true
+	startAttackCooldown()
+	await get_tree().create_timer(attackDuration).timeout
+	$SmallSlashHitbox.get_child(1).visible = false
+	$CircularStrikeHitbox.get_child(1).visible = false
+	$LongSlashHitbox.get_child(1).visible = false
+	$SmallSlashHitbox.get_child(0).disabled = true
+	$CircularStrikeHitbox.get_child(0).disabled = true
+	$LongSlashHitbox.get_child(0).disabled = true
+	isAttacking = false
+
 func _physics_process(delta):
 	# Add the gravity.
 	position.z = 0.5
@@ -59,6 +88,27 @@ func _physics_process(delta):
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
+	if Input.is_action_just_pressed("attack") and canAttack:
+		var slashDirection = direction if direction else lastFacedDirection
+		startAttackTimer()
+		if currentPowerup == PowerupClass.NONE:
+			$SmallSlashHitbox.position = Vector3(slashDirection.x, -slashDirection.y, 0)
+			$SmallSlashHitbox.rotation.z = atan2(slashDirection.y, -slashDirection.x) + PI/2
+			$SmallSlashHitbox.get_child(1).visible = true
+			$SmallSlashHitbox.get_child(0).disabled = false
+		if currentPowerup == PowerupClass.BUTTER:
+			$CircularStrikeHitbox.get_child(1).visible = true
+			$CircularStrikeHitbox.get_child(0).disabled = false
+		if currentPowerup == PowerupClass.PEANUTBUTTER:
+			$LongSlashHitbox.position = Vector3(slashDirection.x, -slashDirection.y, 0) * 3
+			$LongSlashHitbox.rotation.z = atan2(slashDirection.y, -slashDirection.x) + PI/2
+			$LongSlashHitbox.get_child(1).visible = true
+			$LongSlashHitbox.get_child(0).disabled = false
+		if currentPowerup == PowerupClass.JAM:
+			var projectile = projectileToFire.instantiate()
+			add_sibling(projectile)
+			projectile.global_position = global_position
+			projectile.velocity = Vector2(slashDirection.x, -slashDirection.y) * 20
 	if isDashing:
 		velocity = dashDirection * dashVelocity
 	else:
@@ -74,9 +124,11 @@ func _physics_process(delta):
 		var currTraction = traction if is_on_floor() else airTraction
 		if direction.x != 0:
 			if direction.x < 0.0:
+				lastFacedDirection = Vector2(-1, 0)
 				if velocity.x > -movementSpeed:
 					velocity.x = move_toward(velocity.x, -movementSpeed, currTraction)
 			else:
+				lastFacedDirection = Vector2(1, 0)
 				if velocity.x < movementSpeed:
 					velocity.x = move_toward(velocity.x, movementSpeed, currTraction)
 		else:
@@ -101,6 +153,8 @@ func _on_hitbox_area_entered(area):
 			currentPowerup = PowerupClass.BUTTER
 		elif area.owner.is_in_group("PeanutButter"):
 			currentPowerup = PowerupClass.PEANUTBUTTER
+		elif area.owner.is_in_group("Jam"):
+			currentPowerup = PowerupClass.JAM
 		return
 	if area.get_collision_layer_value(2):
 		die()
