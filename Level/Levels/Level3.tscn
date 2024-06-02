@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cybw8cr3rj0g0"]
 
-[ext_resource type="MeshLibrary" uid="uid://cgxev0i7bvmqq" path="res://Game Objects/Platforms/PlatformV2.tres" id="2_1ewsf"]
+[ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="2_1ewsf"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_dtpjt"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="4_avaay"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Level/Levels/Level2.gd" id="1_lxiku"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_als7e"]
-[ext_resource type="MeshLibrary" uid="uid://cgxev0i7bvmqq" path="res://Game Objects/Platforms/PlatformV2.tres" id="3_3ognb"]
+[ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="3_3ognb"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="3_nhjc3"]
 [ext_resource type="PackedScene" uid="uid://bs4tne7ti2kbu" path="res://Game Objects/Platforms/Spreadable.tscn" id="3_ny6lc"]
 [ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="6_76h10"]
@@ -61,7 +61,7 @@ shape = SubResource("BoxShape3D_pwjy6")
 [node name="Spreadable" parent="." instance=ExtResource("3_ny6lc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Spreadable Label" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.46842, 0)
 text = "Make sure to spread condiments on all of the bread before moving on! That really butters my biscuits hoh-ho!"
 font_size = 60
