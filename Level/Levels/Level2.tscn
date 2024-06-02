@@ -5,8 +5,8 @@
 [ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="3_3ognb"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="3_nhjc3"]
 [ext_resource type="PackedScene" uid="uid://b8nm5l2eky3ss" path="res://Game Objects/Platforms/Spreadable.tscn" id="3_ny6lc"]
-[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="6_76h10"]
-[ext_resource type="PackedScene" uid="uid://bperbnwisvful" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="6_iu0yk"]
+[ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="6_76h10"]
+[ext_resource type="PackedScene" uid="uid://bvskygu8npbhu" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="6_iu0yk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d0c"]
 size = Vector3(79.7765, 1, 2)
@@ -71,6 +71,14 @@ outline_size = 30
 autowrap_mode = 3
 width = 1200.0
 
+[node name="Spreadable Label" type="Label3D" parent="Spreadable Label"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 7.5, 0)
+text = "Spreading condiments gives you a little momentum boost!"
+font_size = 60
+outline_size = 30
+autowrap_mode = 3
+width = 1200.0
+
 [node name="Spreadable Label2" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 8.5, 0)
 text = "You must spread all of the bread to move to the next level!"
@@ -92,7 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 3.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 1.5, 0)
 
 [node name="Spreadable5" parent="." instance=ExtResource("3_ny6lc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 10.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 10.2531, 0)
 
 [node name="PowerupSpawner" parent="." instance=ExtResource("6_76h10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 2.5, 0)
