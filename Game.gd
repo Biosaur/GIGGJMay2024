@@ -5,6 +5,7 @@ var timer_text = null
 var current_level = null
 var numSpreadables = 0
 var numSpreaded = 0
+var score = 0
 
 signal spreadWarning
 
@@ -12,7 +13,7 @@ signal spreadWarning
 func _ready():
 	timer = $Level/Timer
 	timer._timer_start()
-	timer_text = $Level/Time_remaining
+	timer_text = $"Control/MarginContainer/Time_Remaining"
 	
 	$Level/Player.next_level.connect(_on_next_level)
 	$Level/Player.dead.connect(_on_player_death)
@@ -20,6 +21,10 @@ func _ready():
 
 func _on_next_level():
 	if numSpreadables == numSpreaded:
+		# Calculate score
+		score += round($Level/Timer.time_left * 100)
+		$"Control/MarginContainer/HSplitContainer/Score".text = "Score: " + str(score)
+		
 		var next_level_path = LEVEL_PATH + str($Level.scene_file_path.to_int() + 1) + ".tscn"
 		var newLevel:PackedScene = load(next_level_path)
 		get_tree().paused = true
@@ -42,7 +47,7 @@ func _on_next_level():
 		# Re-initialize the timer for the next level
 		timer = $Level/Timer
 		$Level/Timer._timer_start()
-		timer_text = $Level/Time_remaining
+		timer_text = $"Control/MarginContainer/Time_Remaining"
 		
 		# Play the level complete sound
 		$SoundEffects/Level_Complete.play()
@@ -53,7 +58,7 @@ func _on_next_level():
 		$"Control/MarginContainer/Spreadable Warning".hide()
 
 func _process(delta):
-	timer_text.text = "%s" % roundf(timer.time_left)
+	timer_text.text = "Time Remaining: "+ "%s" % roundf(timer.time_left)
 
 func _on_timer_timeout() -> void:
 	print("timer timed out")

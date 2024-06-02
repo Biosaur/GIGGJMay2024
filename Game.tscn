@@ -99,11 +99,27 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="Pause Button" type="Button" parent="Control/MarginContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Pause Button" type="Button" parent="Control/MarginContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Pause"
+
+[node name="Score" type="Label" parent="Control/MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Score: 0
+"
+
+[node name="Time_Remaining" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Time Remaining: 0"
 
 [node name="Spreadable Counter" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
@@ -149,4 +165,4 @@ stream = ExtResource("6_smeeu")
 [node name="Level_Complete" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("7_rea1y")
 
-[connection signal="pressed" from="Control/MarginContainer/Pause Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HSplitContainer/Pause Button" to="." method="_on_pause_button_pressed"]
