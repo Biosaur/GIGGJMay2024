@@ -24,7 +24,7 @@ func _on_next_level():
 		var newLevel:PackedScene = load(next_level_path)
 		get_tree().paused = true
 		$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe1")
-		await $"Control/Screen Transition Rect/AnimationPlayer".animation_finished
+		await get_tree().create_timer($Level.respawnTime).timeout
 		remove_child($Level)
 		var current_level = newLevel.instantiate()
 		current_level.name = "Level"
