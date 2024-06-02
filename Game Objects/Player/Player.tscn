@@ -1,15 +1,15 @@
-[gd_scene load_steps=68 format=3 uid="uid://dr4nnud25g8tv"]
+[gd_scene load_steps=66 format=3 uid="uid://dr4nnud25g8tv"]
 
 [ext_resource type="PackedScene" uid="uid://b37uc1hsn5yf3" path="res://Game Objects/Player/PlayerProjectile.tscn" id="2_vagbp"]
-[ext_resource type="Texture2D" uid="uid://bct06idpiy72p" path="res://Assets/Player Sprites/Attack/Base Attack Frame 1.png" id="3_75h5i"]
+[ext_resource type="Texture2D" uid="uid://cgualn2kq3r75" path="res://Assets/Player Sprites/Attack/Base Attack Frame 1.png" id="3_75h5i"]
 [ext_resource type="Texture2D" uid="uid://b7cr03i87r5sj" path="res://Assets/Player Sprites/Base Fall.png" id="3_npwj3"]
 [ext_resource type="Script" path="res://Game Objects/Player/CharacterController3D.gd" id="3_yudc1"]
 [ext_resource type="AudioStream" uid="uid://be8ychlwiupfx" path="res://Assets/Sound Effects/Jump.mp3" id="4_eg7k4"]
-[ext_resource type="Texture2D" uid="uid://crvvyqe7top2t" path="res://Assets/Player Sprites/Attack/Base Attack Frame 2.png" id="4_i5esy"]
-[ext_resource type="Texture2D" uid="uid://csoo5ah65cvje" path="res://Assets/Player Sprites/Attack/Base Attack Frame 3.png" id="5_1q36p"]
+[ext_resource type="Texture2D" uid="uid://cg00h8tfwodul" path="res://Assets/Player Sprites/Attack/Base Attack Frame 2.png" id="4_i5esy"]
+[ext_resource type="Texture2D" uid="uid://dfxkm0q01w1xm" path="res://Assets/Player Sprites/Attack/Base Attack Frame 3.png" id="5_1q36p"]
 [ext_resource type="Texture2D" uid="uid://2qbretrda3jk" path="res://Assets/Player Sprites/Base Jump.png" id="5_81ry2"]
 [ext_resource type="AudioStream" uid="uid://cgeb7wiid0wj5" path="res://Assets/Sound Effects/Footsteps_1.mp3" id="5_gjexf"]
-[ext_resource type="Texture2D" uid="uid://drlb4bt6cwukv" path="res://Assets/Player Sprites/Attack/Base Attack Frame 4.png" id="6_7r5mc"]
+[ext_resource type="Texture2D" uid="uid://cwoqkj4cjaykl" path="res://Assets/Player Sprites/Attack/Base Attack Frame 4.png" id="6_7r5mc"]
 [ext_resource type="Texture2D" uid="uid://65s0rjopx5eh" path="res://Assets/Player Sprites/Run/Base Run Frame 1.png" id="6_far2v"]
 [ext_resource type="AudioStream" uid="uid://cxir88jpnequw" path="res://Assets/Sound Effects/Dash_1.wav" id="6_m5wkm"]
 [ext_resource type="Texture2D" uid="uid://llixpye0lcyb" path="res://Assets/Player Sprites/Run/Base Run Frame 2.png" id="7_0belg"]
@@ -49,6 +49,9 @@
 [ext_resource type="Texture2D" uid="uid://dmoh38gvdklun" path="res://Assets/Player Sprites/Peanut Fall.png" id="40_684ce"]
 [ext_resource type="Texture2D" uid="uid://dtxwxf8il8238" path="res://Assets/Player Sprites/Idle/Peanut Idle.png" id="41_srday"]
 [ext_resource type="Texture2D" uid="uid://d0moc4ksy42c2" path="res://Assets/Player Sprites/Peanut Jump.png" id="42_vyto2"]
+[ext_resource type="Texture2D" uid="uid://hxno3bponsqu" path="res://Assets/Attack Effects/Peanut Long Attack.png" id="47_hna62"]
+[ext_resource type="Texture2D" uid="uid://sylmjt116qys" path="res://Assets/Attack Effects/Butter Circle Attack.png" id="48_pcv8o"]
+[ext_resource type="Script" path="res://Game Objects/Player/CircularSlash.gd" id="49_40s7c"]
 [ext_resource type="AudioStream" uid="uid://7egyxxuctkya" path="res://Assets/Sound Effects/Item_Pickup_1.wav" id="50_i03a3"]
 [ext_resource type="AudioStream" uid="uid://bdeu4fijt5yrx" path="res://Assets/Sound Effects/Spread_2.ogg" id="51_kypa5"]
 
@@ -307,34 +310,12 @@ height = 2.2
 radius = 1.0
 height = 8.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twpp0"]
-albedo_color = Color(0.874322, 0.497386, 0.181828, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sxkjy"]
-material = SubResource("StandardMaterial3D_twpp0")
-radius = 0.6
-height = 6.0
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nj413"]
 radius = 0.6
 height = 2.2
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_arq22"]
-radius = 0.2
-height = 1.0
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_ifny1"]
 radius = 3.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frg4h"]
-albedo_color = Color(1, 0.913725, 0.388235, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_4n0fi"]
-material = SubResource("StandardMaterial3D_frg4h")
-radius = 3.0
-height = 6.0
-radial_segments = 8
-rings = 8
 
 [sub_resource type="Animation" id="Animation_f4qc2"]
 resource_name = "Slippery"
@@ -409,35 +390,34 @@ collision_layer = 9
 collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LongSlashHitbox" groups=["Player"]]
+visible = false
 shape = SubResource("CapsuleShape3D_4t54q")
 disabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LongSlashHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Sprite3D" type="Sprite3D" parent="LongSlashHitbox"]
+transform = Transform3D(-6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
-mesh = SubResource("CapsuleMesh_sxkjy")
+texture = ExtResource("47_hna62")
 
 [node name="SmallSlashHitbox" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SmallSlashHitbox"]
-shape = SubResource("CapsuleShape3D_nj413")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SmallSlashHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 visible = false
-mesh = SubResource("CapsuleMesh_arq22")
+shape = SubResource("CapsuleShape3D_nj413")
 
 [node name="CircularStrikeHitbox" type="Area3D" parent="." groups=["Player"]]
 collision_layer = 9
 collision_mask = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CircularStrikeHitbox" groups=["Player"]]
-visible = false
 shape = SubResource("SphereShape3D_ifny1")
 disabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CircularStrikeHitbox"]
-mesh = SubResource("SphereMesh_4n0fi")
+[node name="Sprite3D" type="Sprite3D" parent="CircularStrikeHitbox"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+visible = false
+texture = ExtResource("48_pcv8o")
+script = ExtResource("49_40s7c")
 
 [node name="Slippery Rect" type="ColorRect" parent="."]
 anchors_preset = -1

@@ -117,7 +117,6 @@ func startAttackTimer():
 	startAttackAnimation()
 	startAttackCooldown()
 	await get_tree().create_timer(attackDuration).timeout
-	$SmallSlashHitbox.get_child(1).visible = false
 	$CircularStrikeHitbox.get_child(1).visible = false
 	$LongSlashHitbox.get_child(1).visible = false
 	$SmallSlashHitbox.get_child(0).disabled = true
@@ -129,7 +128,6 @@ func triggerRecoil(strength : float, recoilFromGlobalPosition : Vector3):
 	velocity = strength * (global_position - recoilFromGlobalPosition).normalized()
 
 func _ready():
-	$SmallSlashHitbox.get_child(1).visible = false
 	$CircularStrikeHitbox.get_child(1).visible = false
 	$LongSlashHitbox.get_child(1).visible = false
 	$SmallSlashHitbox.get_child(0).disabled = true
@@ -150,7 +148,6 @@ func _physics_process(delta):
 		if currentPowerup == PowerupClass.NONE:
 			$SmallSlashHitbox.position = Vector3(slashDirection.x, -slashDirection.y, 0)
 			$SmallSlashHitbox.rotation.z = atan2(slashDirection.y, -slashDirection.x) + PI/2
-			$SmallSlashHitbox.get_child(1).visible = true
 			$SmallSlashHitbox.get_child(0).disabled = false
 		if currentPowerup == PowerupClass.BUTTER:
 			$CircularStrikeHitbox.get_child(1).visible = true
@@ -165,6 +162,7 @@ func _physics_process(delta):
 			add_sibling(projectile)
 			projectile.global_position = global_position
 			projectile.velocity = Vector2(slashDirection.x, -slashDirection.y) * 20
+			projectile.rotation.z = atan2(slashDirection.y, -slashDirection.x) 
 			triggerRecoil(attackRecoil, global_position + Vector3(slashDirection.x, -slashDirection.y, 0))
 			$SoundEffects/Spread_1.play()
 			

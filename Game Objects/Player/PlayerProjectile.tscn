@@ -1,19 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://b37uc1hsn5yf3"]
+[gd_scene load_steps=7 format=3 uid="uid://b37uc1hsn5yf3"]
 
 [ext_resource type="Script" path="res://Game Objects/Player/PlayerProjectile.gd" id="1_o7tab"]
+[ext_resource type="Texture2D" uid="uid://r8sqfqdp7yui" path="res://Assets/Attack Effects/Jam Projectile Frame 1.png" id="2_qgpyx"]
+[ext_resource type="Texture2D" uid="uid://ddmjubme7n7h1" path="res://Assets/Attack Effects/Jam Projectile Frame 2.png" id="3_4p02f"]
+[ext_resource type="Texture2D" uid="uid://cdouy1p4jtib5" path="res://Assets/Attack Effects/Jam Projectile Frame 3.png" id="4_1y6k4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y5arp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1grvb"]
-albedo_color = Color(0.417219, 0.14525, 0.663345, 1)
-metallic_specular = 0.0
-clearcoat_enabled = true
-refraction_enabled = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_d55bb"]
-material = SubResource("StandardMaterial3D_1grvb")
-radius = 0.25
-height = 0.5
+[sub_resource type="SpriteFrames" id="SpriteFrames_pb8gk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qgpyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4p02f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1y6k4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="PlayerProjectile" type="Area3D"]
 script = ExtResource("1_o7tab")
@@ -22,8 +31,9 @@ script = ExtResource("1_o7tab")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_y5arp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_d55bb")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pb8gk")
+frame_progress = 0.215157
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
