@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dr4nnud25g8tv"]
+[gd_scene load_steps=22 format=3 uid="uid://dr4nnud25g8tv"]
 
 [ext_resource type="Texture2D" uid="uid://cyh5lqmwifhfq" path="res://Assets/icon.svg" id="2_igv54"]
 [ext_resource type="PackedScene" uid="uid://b37uc1hsn5yf3" path="res://Game Objects/Player/PlayerProjectile.tscn" id="2_vagbp"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://be8ychlwiupfx" path="res://Assets/Sound Effects/Jump.mp3" id="4_eg7k4"]
 [ext_resource type="AudioStream" uid="uid://cgeb7wiid0wj5" path="res://Assets/Sound Effects/Footsteps_1.mp3" id="5_gjexf"]
 [ext_resource type="AudioStream" uid="uid://cxir88jpnequw" path="res://Assets/Sound Effects/Dash_1.wav" id="6_m5wkm"]
+[ext_resource type="AudioStream" uid="uid://bdeu4fijt5yrx" path="res://Assets/Sound Effects/Spread_2.ogg" id="7_qhg1k"]
+[ext_resource type="AudioStream" uid="uid://7egyxxuctkya" path="res://Assets/Sound Effects/Item_Pickup_1.wav" id="8_exrx4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ln0rg"]
 animations = [{
@@ -166,6 +168,12 @@ stream = ExtResource("5_gjexf")
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("6_m5wkm")
+
+[node name="Spread_1" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("7_qhg1k")
+
+[node name="Item_Pickup" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("8_exrx4")
 
 [node name="Timer" type="Timer" parent="."]
 

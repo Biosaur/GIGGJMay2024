@@ -43,6 +43,10 @@ func _on_next_level():
 		timer = $Level/Timer
 		$Level/Timer._timer_start()
 		timer_text = $Level/Time_remaining
+		
+		# Play the level complete sound
+		$SoundEffects/Level_Complete.play()
+		
 	else: 
 		$"Control/MarginContainer/Spreadable Warning".show()
 		await get_tree().create_timer(3).timeout
@@ -71,4 +75,5 @@ func _on_player_death():
 func _on_spread():
 	numSpreaded += 1
 	$"Control/MarginContainer/Spreadable Counter".spread(numSpreaded, numSpreadables)
+	$SoundEffects/Spread_1.play()
 	

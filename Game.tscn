@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://blf1a1ck5qbt4"]
+[gd_scene load_steps=11 format=3 uid="uid://blf1a1ck5qbt4"]
 
 [ext_resource type="PackedScene" uid="uid://dakx2oyqa3mha" path="res://Level/Levels/Level1.tscn" id="1_e67bx"]
 [ext_resource type="Script" path="res://Game.gd" id="1_lmsfh"]
 [ext_resource type="Script" path="res://Control.gd" id="2_67g0b"]
 [ext_resource type="Script" path="res://Spreadable Counter.gd" id="3_48ruf"]
 [ext_resource type="AudioStream" uid="uid://dgwvwh55squ6y" path="res://Assets/Sound Effects/Death.mp3" id="5_0ev4h"]
+[ext_resource type="AudioStream" uid="uid://bdeu4fijt5yrx" path="res://Assets/Sound Effects/Spread_2.ogg" id="6_smeeu"]
+[ext_resource type="AudioStream" uid="uid://b6b2mnsjburhv" path="res://Assets/Sound Effects/Level_Complete.mp3" id="7_rea1y"]
 
 [sub_resource type="Animation" id="Animation_6simj"]
 resource_name = "Swip"
@@ -140,5 +142,11 @@ offset_bottom = 40.0
 
 [node name="Death" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("5_0ev4h")
+
+[node name="Spread_1" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("6_smeeu")
+
+[node name="Level_Complete" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("7_rea1y")
 
 [connection signal="pressed" from="Control/MarginContainer/Pause Button" to="." method="_on_pause_button_pressed"]
