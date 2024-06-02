@@ -169,7 +169,8 @@ func _physics_process(delta):
 		var oldXVel = velocity.x
 		var currTraction = traction if is_on_floor() else airTraction
 		if direction.x != 0:
-			setAnimation("Run")
+			if not isSliding:
+				setAnimation("Run")
 			if direction.x < 0.0:
 				lastFacedDirection = Vector2(-1, 0)
 				setAnimationFlip(true)
@@ -185,7 +186,8 @@ func _physics_process(delta):
 				$SoundEffects/Walking.play()
 				$Timer.start(0.3)
 		else:
-			setAnimation("Idle")
+			if not isSliding:
+				setAnimation("Idle")
 			velocity.x = move_toward(velocity.x, 0, currTraction)
 			
 		if isSliding:
