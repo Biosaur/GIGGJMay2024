@@ -14,7 +14,7 @@ size = Vector3(79.7765, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwjy6"]
 size = Vector3(2, 19, 3)
 
-[node name="Level2" type="Node3D"]
+[node name="Level" type="Node3D"]
 script = ExtResource("1_lxiku")
 startLocation = Vector3(-2, 2, 0)
 
