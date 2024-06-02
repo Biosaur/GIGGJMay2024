@@ -133,6 +133,7 @@ func _physics_process(delta):
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jumpVelocity
+			$SoundEffects/Jump.play()
 
 		# Get the input direction and handle the movement/deceleration.
 		var oldXVel = velocity.x
@@ -146,6 +147,10 @@ func _physics_process(delta):
 				lastFacedDirection = Vector2(1, 0)
 				if velocity.x < movementSpeed:
 					velocity.x = move_toward(velocity.x, movementSpeed, currTraction)
+			if is_on_floor() and $Timer.time_left <= 0.05:
+				$SoundEffects/Walking.pitch_scale = randf_range(0.8, 1.2)
+				$SoundEffects/Walking.play()
+				$Timer.start(0.3)
 		else:
 			velocity.x = move_toward(velocity.x, 0, currTraction)
 			
@@ -156,6 +161,7 @@ func _physics_process(delta):
 			if currentPowerup == PowerupClass.PEANUTBUTTER:
 				dashDirection = Vector3(direction.x, -direction.y, 0)
 				startDashTimer()
+				$SoundEffects/Dash.play()
 			if currentPowerup == PowerupClass.BUTTER:
 				startSlideTimer()
 			currentPowerup = PowerupClass.NONE

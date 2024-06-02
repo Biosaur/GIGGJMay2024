@@ -66,6 +66,7 @@ func _on_player_death():
 	$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe2")
 	$Level/Player.position = $Level.startLocation
 	$Level/Player/SpringArm3D/Camera3D.make_current()
+	$SoundEffects/Death.play()
 
 func _on_spread():
 	numSpreaded += 1
