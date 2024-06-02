@@ -386,7 +386,7 @@ height = 2.2
 radius = 3.0
 
 [sub_resource type="Animation" id="Animation_f4qc2"]
-resource_name = "Duration Bar"
+resource_name = "Slippery"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -403,7 +403,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sr5ct"]
 _data = {
-"Duration Bar": SubResource("Animation_f4qc2")
+"Slippery": SubResource("Animation_f4qc2")
 }
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
@@ -498,19 +498,6 @@ anchor_bottom = 0.575
 color = Color(1, 0.894118, 0.411765, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Slippery Rect"]
-libraries = {
-"": SubResource("AnimationLibrary_sr5ct")
-}
-
-[node name="Antigrav Rect" type="ColorRect" parent="."]
-anchors_preset = -1
-anchor_left = 0.45
-anchor_top = 0.555
-anchor_right = 0.45
-anchor_bottom = 0.575
-color = Color(0.8416, 0.2496, 0.96, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Antigrav Rect"]
 libraries = {
 "": SubResource("AnimationLibrary_sr5ct")
 }
