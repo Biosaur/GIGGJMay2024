@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b272odtka5dcl"]
+[gd_scene load_steps=11 format=3 uid="uid://cybw8cr3rj0g0"]
 
 [ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="2_1ewsf"]
 [ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="2_d1c2t"]
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="2_dtpjt"]
-[ext_resource type="PackedScene" uid="uid://bvskygu8npbhu" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="3_ukhrq"]
+[ext_resource type="PackedScene" uid="uid://bperbnwisvful" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="3_ukhrq"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="4_avaay"]
 [ext_resource type="PackedScene" uid="uid://b8nm5l2eky3ss" path="res://Game Objects/Platforms/Spreadable.tscn" id="6_h7kpm"]
 

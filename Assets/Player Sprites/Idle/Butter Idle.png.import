@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtxwxf8il8238"
-path="res://.godot/imported/Peanut Idle.png-9db7a28f83bccff5de267779d5dbd63a.ctex"
+uid="uid://dpk3jwi020qo1"
+path.s3tc="res://.godot/imported/Butter Idle.png-00b453963310a5c94211f2804a8a055b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/Player Sprites/Peanut Idle.png"
-dest_files=["res://.godot/imported/Peanut Idle.png-9db7a28f83bccff5de267779d5dbd63a.ctex"]
+source_file="res://Assets/Player Sprites/Idle/Butter Idle.png"
+dest_files=["res://.godot/imported/Butter Idle.png-00b453963310a5c94211f2804a8a055b.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

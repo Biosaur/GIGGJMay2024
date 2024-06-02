@@ -31,7 +31,7 @@ const LEVEL_PATH = "res://Level/Levels/Level"
 @export var slideDuration : float = 3.0
 @export var slideSlipperiness : float = 0.2
 
-@export var attackDuration : float = 0.2
+@export var attackDuration : float = 0.1
 @export var attackCooldown : float = 0.3
 
 @export var projectileToFire : PackedScene
@@ -49,7 +49,39 @@ var isSliding = false
 var isAttacking = false
 var canAttack = true
 
+const attackAnimDuration = 0.3
+var isAttackAnimPlaying = false
+
 var lastFacedDirection = Vector2(1, 0)
+
+func updateAnimationFlavour():
+	$Anim/BaseAnimation.visible = currentPowerup == PowerupClass.NONE
+	$Anim/ButterAnimation.visible = currentPowerup == PowerupClass.BUTTER
+	$Anim/JamAnimation.visible = currentPowerup == PowerupClass.JAM
+	$Anim/PeanutAnimation.visible = currentPowerup == PowerupClass.PEANUTBUTTER
+
+func setAnimationSpeedScale(val : float):
+	$Anim/BaseAnimation.speed_scale = val
+	$Anim/ButterAnimation.speed_scale = val
+	$Anim/JamAnimation.speed_scale = val
+	$Anim/PeanutAnimation.speed_scale = val
+
+func setAnimation(animation):
+	if animation == "Attack":
+		setAnimationSpeedScale(1 / attackAnimDuration)
+	else:
+		setAnimationSpeedScale(1)
+	if not isAttackAnimPlaying or animation == "Attack":
+		$Anim/BaseAnimation.play(animation)
+		$Anim/ButterAnimation.play(animation)
+		$Anim/JamAnimation.play(animation)
+		$Anim/PeanutAnimation.play(animation)
+
+func setAnimationFlip(onOrOff : bool):
+	$Anim/BaseAnimation.flip_h = onOrOff
+	$Anim/ButterAnimation.flip_h = onOrOff
+	$Anim/JamAnimation.flip_h = onOrOff
+	$Anim/PeanutAnimation.flip_h = onOrOff
 
 func startDashTimer():
 	isDashing = true
@@ -72,8 +104,17 @@ func startAttackCooldown():
 	await get_tree().create_timer(attackCooldown).timeout
 	canAttack = true
 
+func startAttackAnimation():
+	$Anim.position.y = 1.385 / 2
+	setAnimation("Attack")
+	isAttackAnimPlaying = true
+	await get_tree().create_timer(attackAnimDuration).timeout
+	$Anim.position.y = 0
+	isAttackAnimPlaying = false
+
 func startAttackTimer():
 	isAttacking = true
+	startAttackAnimation()
 	startAttackCooldown()
 	await get_tree().create_timer(attackDuration).timeout
 	$SmallSlashHitbox.get_child(1).visible = false
@@ -94,6 +135,7 @@ func _ready():
 	$SmallSlashHitbox.get_child(0).disabled = true
 	$CircularStrikeHitbox.get_child(0).disabled = true
 	$LongSlashHitbox.get_child(0).disabled = true
+	updateAnimationFlavour()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -141,12 +183,15 @@ func _physics_process(delta):
 		var oldXVel = velocity.x
 		var currTraction = traction if is_on_floor() else airTraction
 		if direction.x != 0:
+			setAnimation("Run")
 			if direction.x < 0.0:
 				lastFacedDirection = Vector2(-1, 0)
+				setAnimationFlip(true)
 				if velocity.x > -movementSpeed:
 					velocity.x = move_toward(velocity.x, -movementSpeed, currTraction)
 			else:
 				lastFacedDirection = Vector2(1, 0)
+				setAnimationFlip(false)
 				if velocity.x < movementSpeed:
 					velocity.x = move_toward(velocity.x, movementSpeed, currTraction)
 			if is_on_floor() and $Timer.time_left <= 0.05:
@@ -154,11 +199,18 @@ func _physics_process(delta):
 				$SoundEffects/Walking.play()
 				$Timer.start(0.3)
 		else:
+			setAnimation("Idle")
 			velocity.x = move_toward(velocity.x, 0, currTraction)
 			
 		if isSliding:
+			setAnimation("Jump")
 			velocity.x = lerp(velocity.x, oldXVel, slideSlipperiness)
-
+		
+		if not is_on_floor():
+			if velocity.y > 0:
+				setAnimation("Jump")
+			else:
+				setAnimation("Fall")
 		if Input.is_action_just_pressed("ability"):
 			if currentPowerup == PowerupClass.PEANUTBUTTER:
 				dashDirection = Vector3(direction.x, -direction.y, 0)
@@ -167,7 +219,8 @@ func _physics_process(delta):
 			if currentPowerup == PowerupClass.BUTTER:
 				startSlideTimer()
 			currentPowerup = PowerupClass.NONE
-	
+			updateAnimationFlavour()
+		
 	move_and_slide()
 
 func _on_hitbox_area_entered(area):
@@ -175,10 +228,13 @@ func _on_hitbox_area_entered(area):
 		$SoundEffects/Item_Pickup.play()
 		if area.owner.is_in_group("Butter"):
 			currentPowerup = PowerupClass.BUTTER
+			updateAnimationFlavour()
 		elif area.owner.is_in_group("PeanutButter"):
 			currentPowerup = PowerupClass.PEANUTBUTTER
+			updateAnimationFlavour()
 		elif area.owner.is_in_group("Jam"):
 			currentPowerup = PowerupClass.JAM
+			updateAnimationFlavour()
 		return
 	if area.get_collision_layer_value(2):
 		die()
@@ -189,6 +245,7 @@ func _on_hitbox_area_entered(area):
 
 func die():
 	currentPowerup = PowerupClass.NONE
+	updateAnimationFlavour()
 	dead.emit()
 
 func progress():

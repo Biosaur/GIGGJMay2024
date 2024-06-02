@@ -1,32 +1,303 @@
-[gd_scene load_steps=22 format=3 uid="uid://dr4nnud25g8tv"]
+[gd_scene load_steps=68 format=3 uid="uid://dr4nnud25g8tv"]
 
-[ext_resource type="Texture2D" uid="uid://cyh5lqmwifhfq" path="res://Assets/icon.svg" id="2_igv54"]
 [ext_resource type="PackedScene" uid="uid://b37uc1hsn5yf3" path="res://Game Objects/Player/PlayerProjectile.tscn" id="2_vagbp"]
+[ext_resource type="Texture2D" uid="uid://bct06idpiy72p" path="res://Assets/Player Sprites/Attack/Base Attack Frame 1.png" id="3_75h5i"]
+[ext_resource type="Texture2D" uid="uid://b7cr03i87r5sj" path="res://Assets/Player Sprites/Base Fall.png" id="3_npwj3"]
 [ext_resource type="Script" path="res://Game Objects/Player/CharacterController3D.gd" id="3_yudc1"]
 [ext_resource type="AudioStream" uid="uid://be8ychlwiupfx" path="res://Assets/Sound Effects/Jump.mp3" id="4_eg7k4"]
+[ext_resource type="Texture2D" uid="uid://crvvyqe7top2t" path="res://Assets/Player Sprites/Attack/Base Attack Frame 2.png" id="4_i5esy"]
+[ext_resource type="Texture2D" uid="uid://csoo5ah65cvje" path="res://Assets/Player Sprites/Attack/Base Attack Frame 3.png" id="5_1q36p"]
+[ext_resource type="Texture2D" uid="uid://2qbretrda3jk" path="res://Assets/Player Sprites/Base Jump.png" id="5_81ry2"]
 [ext_resource type="AudioStream" uid="uid://cgeb7wiid0wj5" path="res://Assets/Sound Effects/Footsteps_1.mp3" id="5_gjexf"]
+[ext_resource type="Texture2D" uid="uid://drlb4bt6cwukv" path="res://Assets/Player Sprites/Attack/Base Attack Frame 4.png" id="6_7r5mc"]
+[ext_resource type="Texture2D" uid="uid://65s0rjopx5eh" path="res://Assets/Player Sprites/Run/Base Run Frame 1.png" id="6_far2v"]
 [ext_resource type="AudioStream" uid="uid://cxir88jpnequw" path="res://Assets/Sound Effects/Dash_1.wav" id="6_m5wkm"]
-[ext_resource type="AudioStream" uid="uid://bdeu4fijt5yrx" path="res://Assets/Sound Effects/Spread_2.ogg" id="7_qhg1k"]
-[ext_resource type="AudioStream" uid="uid://7egyxxuctkya" path="res://Assets/Sound Effects/Item_Pickup_1.wav" id="8_exrx4"]
+[ext_resource type="Texture2D" uid="uid://llixpye0lcyb" path="res://Assets/Player Sprites/Run/Base Run Frame 2.png" id="7_0belg"]
+[ext_resource type="Texture2D" uid="uid://bwb1bmddxlhc2" path="res://Assets/Player Sprites/Idle/Base Idle.png" id="8_8spki"]
+[ext_resource type="Texture2D" uid="uid://l0cll454mxka" path="res://Assets/Player Sprites/Run/Base Run Frame 3.png" id="8_y8jqx"]
+[ext_resource type="Texture2D" uid="uid://bfhpbd1j3rlxw" path="res://Assets/Player Sprites/Run/Base Run Frame 4.png" id="9_2hilh"]
+[ext_resource type="Texture2D" uid="uid://55orr1nop4dt" path="res://Assets/Player Sprites/Run/Butter Run Frame 1.png" id="10_5yd8w"]
+[ext_resource type="Texture2D" uid="uid://bvgcr8k2ohal1" path="res://Assets/Player Sprites/Run/Butter Run Frame 2.png" id="11_vpe45"]
+[ext_resource type="Texture2D" uid="uid://bxiqc8xlofscc" path="res://Assets/Player Sprites/Run/Butter Run Frame 3.png" id="12_aitr1"]
+[ext_resource type="Texture2D" uid="uid://w4pv01h2v1cm" path="res://Assets/Player Sprites/Run/Butter Run Frame 4.png" id="13_tpfj8"]
+[ext_resource type="Texture2D" uid="uid://17kugvag821u" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 1.png" id="14_h781d"]
+[ext_resource type="Texture2D" uid="uid://qxhexx6qg1n1" path="res://Assets/Player Sprites/Run/Jam Run Frame 1.png" id="14_thpux"]
+[ext_resource type="Texture2D" uid="uid://b3w18qx2hb6um" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 2.png" id="15_k51jx"]
+[ext_resource type="Texture2D" uid="uid://c6kbfxl61co2r" path="res://Assets/Player Sprites/Run/Jam Run Frame 2.png" id="15_ld4ck"]
+[ext_resource type="Texture2D" uid="uid://705n1munwbet" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 3.png" id="16_10pod"]
+[ext_resource type="Texture2D" uid="uid://clfgwnw2ou672" path="res://Assets/Player Sprites/Run/Jam Run Frame 3.png" id="16_cyos5"]
+[ext_resource type="Texture2D" uid="uid://c87wx48bmnweb" path="res://Assets/Player Sprites/Attack/Butter Attack Frame 4.png" id="17_8ykih"]
+[ext_resource type="Texture2D" uid="uid://byx3vlsljub8k" path="res://Assets/Player Sprites/Run/Jam Run Frame 4.png" id="17_nlutx"]
+[ext_resource type="Texture2D" uid="uid://sfejrtitfch6" path="res://Assets/Player Sprites/Run/Peanut Run Frame 1.png" id="18_3cxy1"]
+[ext_resource type="Texture2D" uid="uid://i2cgxno7cjag" path="res://Assets/Player Sprites/Butter Fall.png" id="18_o0agk"]
+[ext_resource type="Texture2D" uid="uid://c3h7xw8qjqa0n" path="res://Assets/Player Sprites/Run/Peanut Run Frame 2.png" id="19_2njt5"]
+[ext_resource type="Texture2D" uid="uid://dpk3jwi020qo1" path="res://Assets/Player Sprites/Idle/Butter Idle.png" id="19_ngdo7"]
+[ext_resource type="Texture2D" uid="uid://bmguafbaaepbb" path="res://Assets/Player Sprites/Run/Peanut Run Frame 3.png" id="20_0s3bp"]
+[ext_resource type="Texture2D" uid="uid://cmm8jo1rqw22j" path="res://Assets/Player Sprites/Butter Jump.png" id="20_x1m4j"]
+[ext_resource type="Texture2D" uid="uid://bln8cimgndeuw" path="res://Assets/Player Sprites/Run/Peanut Run Frame 4.png" id="21_sbbog"]
+[ext_resource type="Texture2D" uid="uid://6ecei45qxyoq" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 1.png" id="25_j2m07"]
+[ext_resource type="Texture2D" uid="uid://jndhmw6rmi6e" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 2.png" id="26_h0tsh"]
+[ext_resource type="Texture2D" uid="uid://gsvfrbiptf1t" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 3.png" id="27_0lsnm"]
+[ext_resource type="Texture2D" uid="uid://c11cot6iv4uw7" path="res://Assets/Player Sprites/Attack/Jam Attack Frame 4.png" id="28_xua5d"]
+[ext_resource type="Texture2D" uid="uid://bgd7h3utb7022" path="res://Assets/Player Sprites/Jam Fall.png" id="29_yws3k"]
+[ext_resource type="Texture2D" uid="uid://dguv8o21q1oup" path="res://Assets/Player Sprites/Idle/Jam Idle.png" id="30_wmyq0"]
+[ext_resource type="Texture2D" uid="uid://cb0yk7o3ms21g" path="res://Assets/Player Sprites/Jam Jump.png" id="31_sibrv"]
+[ext_resource type="Texture2D" uid="uid://d1xq2ed86fk3j" path="res://Assets/Player Sprites/Attack/Peanut Attack Frame 1.png" id="36_vx5b4"]
+[ext_resource type="Texture2D" uid="uid://bbxuwjmo8ebep" path="res://Assets/Player Sprites/Attack/Peanut Attack Frame 2.png" id="37_e3fcy"]
+[ext_resource type="Texture2D" uid="uid://cxfb46np4rihq" path="res://Assets/Player Sprites/Attack/Peanut Attack Frame 3.png" id="38_thv88"]
+[ext_resource type="Texture2D" uid="uid://ci2khsp8xcj3p" path="res://Assets/Player Sprites/Attack/Peanut Attack Frame 4.png" id="39_v5c3d"]
+[ext_resource type="Texture2D" uid="uid://dmoh38gvdklun" path="res://Assets/Player Sprites/Peanut Fall.png" id="40_684ce"]
+[ext_resource type="Texture2D" uid="uid://dtxwxf8il8238" path="res://Assets/Player Sprites/Idle/Peanut Idle.png" id="41_srday"]
+[ext_resource type="Texture2D" uid="uid://d0moc4ksy42c2" path="res://Assets/Player Sprites/Peanut Jump.png" id="42_vyto2"]
+[ext_resource type="AudioStream" uid="uid://7egyxxuctkya" path="res://Assets/Sound Effects/Item_Pickup_1.wav" id="50_i03a3"]
+[ext_resource type="AudioStream" uid="uid://bdeu4fijt5yrx" path="res://Assets/Sound Effects/Spread_2.ogg" id="51_kypa5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ln0rg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_igv54")
+"texture": ExtResource("3_75h5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i5esy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1q36p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7r5mc")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_npwj3")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_8spki")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_81ry2")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_far2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0belg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y8jqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2hilh")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5pbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_h781d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k51jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_10pod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8ykih")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_o0agk")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_ngdo7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_x1m4j")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_5yd8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vpe45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_aitr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tpfj8")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vexd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_j2m07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_h0tsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_0lsnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xua5d")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_yws3k")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_wmyq0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_sibrv")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_thpux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ld4ck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cyos5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nlutx")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytk6h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_vx5b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_e3fcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_thv88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_v5c3d")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_684ce")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_srday")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("42_vyto2")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_3cxy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_2njt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0s3bp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sbbog")
+}],
+"loop": true,
+"name": &"Run",
 "speed": 5.0
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o16lf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkbs4"]
-albedo_texture = ExtResource("2_igv54")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_c32ck"]
-material = SubResource("StandardMaterial3D_xkbs4")
+size = Vector3(1, 1.6, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kpt4k"]
 radius = 0.6
@@ -36,22 +307,30 @@ height = 2.2
 radius = 1.0
 height = 8.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twpp0"]
+albedo_color = Color(0.874322, 0.497386, 0.181828, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sxkjy"]
-radius = 1.0
-height = 8.0
+material = SubResource("StandardMaterial3D_twpp0")
+radius = 0.6
+height = 6.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nj413"]
 radius = 0.6
 height = 2.2
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_arq22"]
-radius = 0.6
-height = 2.2
+radius = 0.2
+height = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ifny1"]
 radius = 3.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frg4h"]
+albedo_color = Color(1, 0.913725, 0.388235, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_4n0fi"]
+material = SubResource("StandardMaterial3D_frg4h")
 radius = 3.0
 height = 6.0
 radial_segments = 8
@@ -82,16 +361,32 @@ _data = {
 script = ExtResource("3_yudc1")
 projectileToFire = ExtResource("2_vagbp")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1.63244, 0, 0, 0, 1, 0, 0, 0)
-visible = false
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="BaseAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ln0rg")
+animation = &"Attack"
+frame_progress = 0.824725
+
+[node name="ButterAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
+visible = false
+sprite_frames = SubResource("SpriteFrames_u5pbx")
+animation = &"Attack"
+
+[node name="JamAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
+visible = false
+sprite_frames = SubResource("SpriteFrames_0vexd")
+animation = &"Run"
+
+[node name="PeanutAnimation" type="AnimatedSprite3D" parent="Anim" groups=["Player"]]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ytk6h")
+animation = &"Run"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_o16lf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Player"]]
-mesh = SubResource("CapsuleMesh_c32ck")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." groups=["Player"]]
 visible = false
@@ -118,6 +413,7 @@ shape = SubResource("CapsuleShape3D_4t54q")
 disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LongSlashHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_sxkjy")
 
@@ -127,6 +423,7 @@ mesh = SubResource("CapsuleMesh_sxkjy")
 shape = SubResource("CapsuleShape3D_nj413")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SmallSlashHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_arq22")
 
@@ -140,7 +437,6 @@ shape = SubResource("SphereShape3D_ifny1")
 disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CircularStrikeHitbox"]
-visible = false
 mesh = SubResource("SphereMesh_4n0fi")
 
 [node name="Slippery Rect" type="ColorRect" parent="."]
@@ -169,11 +465,11 @@ stream = ExtResource("5_gjexf")
 [node name="Dash" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource("6_m5wkm")
 
-[node name="Spread_1" type="AudioStreamPlayer2D" parent="SoundEffects"]
-stream = ExtResource("7_qhg1k")
-
 [node name="Item_Pickup" type="AudioStreamPlayer2D" parent="SoundEffects"]
-stream = ExtResource("8_exrx4")
+stream = ExtResource("50_i03a3")
+
+[node name="Spread_1" type="AudioStreamPlayer2D" parent="SoundEffects"]
+stream = ExtResource("51_kypa5")
 
 [node name="Timer" type="Timer" parent="."]
 
