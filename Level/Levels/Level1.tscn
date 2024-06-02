@@ -13,7 +13,7 @@ size = Vector3(76, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwjy6"]
 size = Vector3(2, 19, 3)
 
-[node name="Level1" type="Node3D"]
+[node name="Level" type="Node3D"]
 script = ExtResource("1_tt362")
 startLocation = Vector3(-25, 2, 0)
 

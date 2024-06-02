@@ -27,7 +27,6 @@ func _on_next_level():
 		await get_tree().create_timer($Level.respawnTime).timeout
 		remove_child($Level)
 		var current_level = newLevel.instantiate()
-		current_level.name = "Level"
 		add_child(current_level)
 		$"Control/Screen Transition Rect/AnimationPlayer".play("Swipe2")
 		get_tree().paused = false
