@@ -54,7 +54,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 transform = Transform3D(0.475504, 0.612016, -0.631927, -0.00129373, 0.718819, 0.695196, 0.879712, -0.329751, 0.342593, 0, 0, 0)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 150.0
 one_shot = true
 autostart = true
 script = ExtResource("3_3f118")
