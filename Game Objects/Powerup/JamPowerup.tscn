@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cktd1i3m53oe5"]
+[gd_scene load_steps=5 format=3 uid="uid://cktd1i3m53oe5"]
 
 [ext_resource type="PackedScene" uid="uid://bqyvi3mi8lbtk" path="res://Game Objects/Powerup/PowerupCollision.tscn" id="1_1c36l"]
 [ext_resource type="Script" path="res://Game Objects/Powerup/PowerupAnimation.gd" id="2_0p025"]
+[ext_resource type="PackedScene" uid="uid://d3s22kdtd61vp" path="res://Assets/Powerup Meshes/Jam Pickup.glb" id="3_y0biy"]
 
 [sub_resource type="GDScript" id="GDScript_sjw6w"]
 script/source = "extends Node3D
@@ -21,20 +22,16 @@ func _on_powerup_collision_player_entered():
 	queue_free()
 "
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nw06"]
-albedo_color = Color(0.364355, 0.00120616, 0.872548, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_qgvmv"]
-material = SubResource("StandardMaterial3D_3nw06")
-
 [node name="JamPowerup" type="Node3D" groups=["Jam"]]
 script = SubResource("GDScript_sjw6w")
 
 [node name="PowerupCollision" parent="." groups=["Jam"] instance=ExtResource("1_1c36l")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Jam"]]
-transform = Transform3D(0.303768, 0.250805, 0.172893, -0.319947, 0.228688, 0.179019, 0.0130507, -0.231272, 0.364515, 0, 0, 0)
-mesh = SubResource("SphereMesh_qgvmv")
+transform = Transform3D(0.344116, 0.305326, 0.195858, -0.362444, 0.278402, 0.202798, 0.0147842, -0.281547, 0.412932, 0, 0, 0)
 script = ExtResource("2_0p025")
+
+[node name="Jam Pickup" parent="MeshInstance3D" instance=ExtResource("3_y0biy")]
+transform = Transform3D(1.55929, -0.909283, 1.3693, 1.4868, -0.3149, -1.9022, 0.887493, 2.05439, 0.353584, 0, 0, 0)
 
 [connection signal="playerEntered" from="PowerupCollision" to="." method="_on_powerup_collision_player_entered"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvskygu8npbhu"]
+[gd_scene load_steps=5 format=3 uid="uid://bperbnwisvful"]
 
 [ext_resource type="PackedScene" uid="uid://bqyvi3mi8lbtk" path="res://Game Objects/Powerup/PowerupCollision.tscn" id="1_0eakv"]
-[ext_resource type="Texture2D" uid="uid://cyh5lqmwifhfq" path="res://Assets/icon.svg" id="2_h7k42"]
 [ext_resource type="Script" path="res://Game Objects/Powerup/PowerupAnimation.gd" id="3_qv0ad"]
+[ext_resource type="PackedScene" uid="uid://jyifddjt2tvv" path="res://Assets/Powerup Meshes/Peanut Pickup.glb" id="3_v4vou"]
 
 [sub_resource type="GDScript" id="GDScript_sjw6w"]
 script/source = "extends Node3D
@@ -22,20 +22,16 @@ func _on_powerup_collision_player_entered():
 	queue_free()
 "
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35lfd"]
-albedo_texture = ExtResource("2_h7k42")
-
-[sub_resource type="BoxMesh" id="BoxMesh_us581"]
-material = SubResource("StandardMaterial3D_35lfd")
-
 [node name="PeanutButterPowerup" type="Node3D" groups=["PeanutButter"]]
 script = SubResource("GDScript_sjw6w")
 
 [node name="PowerupCollision" parent="." groups=["PeanutButter"] instance=ExtResource("1_0eakv")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["PeanutButter"]]
-transform = Transform3D(0.303768, 0.250805, 0.172893, -0.319947, 0.228688, 0.179019, 0.0130507, -0.231272, 0.364515, 0, 0, 0)
-mesh = SubResource("BoxMesh_us581")
+transform = Transform3D(0.344116, 0.305326, 0.195858, -0.362444, 0.278402, 0.202798, 0.0147842, -0.281547, 0.412932, 0, -0.11433, 0)
 script = ExtResource("3_qv0ad")
+
+[node name="Peanut Pickup" parent="MeshInstance3D" instance=ExtResource("3_v4vou")]
+transform = Transform3D(1.0105, -0.0280351, 1.61953, 1.50361, 0.726068, -0.925609, -0.602336, 1.76545, 0.406389, 0, 0, 0)
 
 [connection signal="playerEntered" from="PowerupCollision" to="." method="_on_powerup_collision_player_entered"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="2_d3odf"]
 [ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="2_nljej"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="3_07inc"]
-[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="3_431ep"]
+[ext_resource type="PackedScene" uid="uid://bperbnwisvful" path="res://Game Objects/Powerup/PeanutButterPowerup.tscn" id="3_431ep"]
 [ext_resource type="PackedScene" uid="uid://b8nm5l2eky3ss" path="res://Game Objects/Platforms/Spreadable.tscn" id="4_p8ev3"]
 
 [sub_resource type="GDScript" id="GDScript_wgvjj"]

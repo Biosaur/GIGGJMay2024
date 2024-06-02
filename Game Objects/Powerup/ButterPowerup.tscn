@@ -1,6 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c80b5emtl3e2h"]
 
 [ext_resource type="PackedScene" uid="uid://bqyvi3mi8lbtk" path="res://Game Objects/Powerup/PowerupCollision.tscn" id="1_fjha0"]
+[ext_resource type="PackedScene" uid="uid://cog0jipnwhvlw" path="res://Assets/Powerup Meshes/Butter Pickup.glb" id="3_7qg17"]
 [ext_resource type="Script" path="res://Game Objects/Powerup/PowerupAnimation.gd" id="3_k7ttx"]
 
 [sub_resource type="GDScript" id="GDScript_sjw6w"]
@@ -21,16 +22,16 @@ func _on_powerup_collision_player_entered():
 	queue_free()
 "
 
-[sub_resource type="PrismMesh" id="PrismMesh_5ogt4"]
-
 [node name="ButterPowerup" type="Node3D" groups=["Butter"]]
 script = SubResource("GDScript_sjw6w")
 
 [node name="PowerupCollision" parent="." groups=["Butter"] instance=ExtResource("1_fjha0")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["Butter"]]
-transform = Transform3D(0.303768, 0.250805, 0.172893, -0.319947, 0.228688, 0.179019, 0.0130507, -0.231272, 0.364515, 0, 0, 0)
-mesh = SubResource("PrismMesh_5ogt4")
+transform = Transform3D(0.344116, 0.305326, 0.195858, -0.362444, 0.278402, 0.202798, 0.0147842, -0.281547, 0.412932, 0, 0, 0)
 script = ExtResource("3_k7ttx")
+
+[node name="Butter Pickup" parent="MeshInstance3D" instance=ExtResource("3_7qg17")]
+transform = Transform3D(0.60727, -0.0652982, 0.791808, 0.692474, 0.532081, -0.487207, -0.389492, 0.844172, 0.368334, 0, 0, 0)
 
 [connection signal="playerEntered" from="PowerupCollision" to="." method="_on_powerup_collision_player_entered"]
