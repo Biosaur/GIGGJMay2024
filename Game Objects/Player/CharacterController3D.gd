@@ -261,6 +261,9 @@ func _on_hitbox_area_entered(area):
 func die():
 	currentPowerup = PowerupClass.NONE
 	updateAnimationFlavour()
+	isSliding = false
+	isAntigrav = false
+	velocity = Vector3()
 	dead.emit()
 
 func progress():
