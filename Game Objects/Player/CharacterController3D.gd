@@ -264,6 +264,7 @@ func die():
 	isSliding = false
 	isAntigrav = false
 	velocity = Vector3()
+	setAnimationVertFlip(false)
 	dead.emit()
 
 func progress():

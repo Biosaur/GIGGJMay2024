@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4bbd3pue3qm1"]
 
 [ext_resource type="PackedScene" uid="uid://dr4nnud25g8tv" path="res://Game Objects/Player/Player.tscn" id="1_nlecn"]
-[ext_resource type="PackedScene" uid="uid://c1qlb175h1q70" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="2_d3odf"]
+[ext_resource type="PackedScene" path="res://Game Objects/Powerup/PowerupSpawner.tscn" id="2_d3odf"]
 [ext_resource type="MeshLibrary" uid="uid://b48hafntwij1k" path="res://Game Objects/Platforms/PlatformV2.tres" id="2_nljej"]
 [ext_resource type="Script" path="res://Level/Levels/Timer.gd" id="3_07inc"]
 [ext_resource type="PackedScene" uid="uid://cktd1i3m53oe5" path="res://Game Objects/Powerup/JamPowerup.tscn" id="3_up1lp"]
